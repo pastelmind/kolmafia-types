@@ -107,7 +107,7 @@ export function chew(arg1: number, arg2: Item): boolean;
 export function choiceFollowsFight(): boolean;
 export function classModifier(arg: string, modifier: string): Class;
 export function classModifier(arg: Item, modifier: string): Class;
-export function clear(arg: any): void;
+export function clear(arg: unknown): void;
 export function cliExecute(string: string): boolean;
 export function cliExecuteOutput(string: string): string;
 export function closetAmount(arg: Item): number;
@@ -115,7 +115,7 @@ export function combatManaCostModifier(): number;
 export function combatRateModifier(): number;
 export function containsText(source: string, search: string): boolean;
 export function council(): void;
-export function count(arg: any): number;
+export function count(arg: unknown): number;
 export function craft(
   modeValue: string,
   countValue: number,
@@ -203,8 +203,8 @@ export function faxbot(monsterName: Monster, botName: string): boolean;
 export function fightFollowsChoice(): boolean;
 export function fileToArray(var1: string): {[key: number]: string};
 export function fileToBuffer(var1: string): string;
-export function fileToMap(var1: string, var2: any): boolean;
-export function fileToMap(var1: string, var2: any, var3: boolean): boolean;
+export function fileToMap(var1: string, var2: unknown): boolean;
+export function fileToMap(var1: string, var2: unknown, var3: boolean): boolean;
 export function floor(arg: number): number;
 export function floristAvailable(): boolean;
 export function flushMonsterManuelCache(): boolean;
@@ -379,8 +379,8 @@ export function mallPrices(arg: {[key: number]: boolean}): number;
 export function mallPrices(arg: string): number;
 export function mallPrices(category: string, tiers: string): number;
 export function manaCostModifier(): number;
-export function mapToFile(var1: any, var2: string): boolean;
-export function mapToFile(var1: any, var2: string, var3: boolean): boolean;
+export function mapToFile(var1: unknown, var2: string): boolean;
+export function mapToFile(var1: unknown, var2: string, var3: boolean): boolean;
 export function max(arg1: number, arg2: number[]): number;
 export function max(arg1: number, arg2: number[]): number;
 export function maximize(
