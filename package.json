@@ -6,6 +6,10 @@
   "files": [
     "src"
   ],
+  "engines": {
+    "npm": ">= 6.9.0",
+    "yarn": ">= 0.17.0"
+  },
   "scripts": {
     "lint": "gts lint",
     "fix": "gts fix",
