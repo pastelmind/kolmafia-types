@@ -9,135 +9,1087 @@ import './global';
 // KoLmafia's source code. Because kolmafia-js does not come with a license as
 // of writing, I post none here.
 
-export function abort(string: string): void;
+/**
+ * Immediately halts the current script and all queued functions.
+ */
 export function abort(): void;
-export function addItemCondition(arg1: number, arg2: Item): void;
-export function addItemCondition(arg1: Item, arg2: number): void;
+
+/**
+ * Immediately halts the current script and all queued functions.
+ * @param message Message to print
+ */
+export function abort(message: string): void;
+
+/**
+ * Adds `qty` of `item` to your current adventuring conditions. Auto-adventuring
+ * through KoLmafia or the `adventure()` function will stop if your current
+ * conditions are met.
+ *
+ * Note that this function adds items in "+ mode" rather than the standard
+ * "total mode" done via the Adventuring pane of KoLmafia; i.e. it will add a
+ * condition to get `qty` additional items, rather than a condition to have
+ * `qty` total items in inventory.
+ * @param qty Desired quantity
+ * @param item Desired item
+ */
+export function addItemCondition(qty: number, item: Item): void;
+
+/**
+ * Adds `qty` of `item` to your current adventuring conditions. Auto-adventuring
+ * through KoLmafia or the `adventure()` function will stop if your current
+ * conditions are met.
+ *
+ * Note that this function adds items in "+ mode" rather than the standard
+ * "total mode" done via the Adventuring pane of KoLmafia; i.e. it will add a
+ * condition to get `qty` additional items, rather than a condition to have
+ * `qty` total items in inventory.
+ * @param item Desired item
+ * @param qty Desired quantity
+ */
+export function addItemCondition(item: Item, qty: number): void;
+
+/**
+ * Adventure exactly once in the specified `place` (even if it takes no turns),
+ * although it will follow chained choice adventures for as long as you have
+ * preset options.
+ * @param place Adventuring location
+ * @param turnsUsed Overrides the normal number of adventures that are expected
+ *    to be consumed at this location, or -1 can be passed to use the default.
+ *    Specifically, 0 will prevent any counters from triggering - of course, if
+ *    an adventure actually is consumed, any counters that you kept from
+ *    triggering will be lost.
+ * @param filter A macro (if it contains a semicolon) or the name of a combat
+ *    filter function defined elsewhere in your script, with the same behavior
+ *    as in the 3-parameter version of `adventure()`. An empty string can be
+ *    passed to use your battle action or CCS as normal.
+ *    (*NOTE: It is unclear how this parameter works in JavaScript.*)
+ * @return `true` if all adventures were used, or `false` otherwise (e.g. not
+ *    enough adventures, location unavailable). Also returns `false` if you
+ *    successfully adventured in a zone, but KoLmafia was put into a "PENDING"
+ *    state, which indicates that we might be done adventuring in this location
+ *    (usually because we finished the quest-related action in that zone).
+ */
 export function adv1(
-  locationValue: Location,
-  adventuresUsedValue: number,
-  filterFunction: string
+  place: Location,
+  turnsUsed: number,
+  filter: string
 ): boolean;
+
+/**
+ * Returns the adventure cost for the next cast of the given skill.
+ * @param skill Skill to check the cost of
+ * @return Adventure cost of the skill
+ */
 export function advCost(skill: Skill): number;
-export function adventure(arg1: Location, arg2: number): boolean;
+
+/**
+ * Spends `adventures` at the `place`, keeping up your current mood & obeying
+ * restore settings. This uses your current CSS / battle action script.
+ * @param place Adventuring location
+ * @param adventures Number of adventures to spend. Any "free" turns (e.g choice
+ *    adventures that don't consume an adventure) or adventures spent in other
+ *    locations (e.g. by a `counterScript` or a `betweenBattleScript`) do not
+ *    count towards this total.
+ * @return `true` if the specified number of adventures were used, or `false`
+ *    otherwise (e.g. not enough adventures, location unavailable, all goals
+ *    satisfied while adventuring, or auto-stop triggered).
+ */
+export function adventure(place: Location, adventures: number): boolean;
+
+/**
+ * Spends `adventures` at the `place`, keeping up your current mood & obeying
+ * restore settings. This uses your current CSS / battle action script.
+ * @param adventures Number of adventures to spend. Any "free" turns (e.g choice
+ *    adventures that don't consume an adventure) or adventures spent in other
+ *    locations (e.g. by a `counterScript` or a `betweenBattleScript`) do not
+ *    count towards this total.
+ * @param place Adventuring location
+ * @return `true` if the specified number of adventures were used, or `false`
+ *    otherwise (e.g. not enough adventures, location unavailable, all goals
+ *    satisfied while adventuring, or auto-stop triggered).
+ */
+export function adventure(adventures: number, place: Location): boolean;
+
+/**
+ * Spends `adventures` at the `place`, keeping up your current mood & obeying
+ * restore settings.
+ * @param place Adventuring location
+ * @param adventures Number of adventures to spend. Any "free" turns (e.g choice
+ *    adventures that don't consume an adventure) or adventures spent in other
+ *    locations (e.g. by a `counterScript` or a `betweenBattleScript`) do not
+ *    count towards this total.
+ * @param filter Combat action filter. If this contains a semicolon, it is
+ *    interpreted as a macro; otherwise, this is the name of a top-level
+ *    function which modifies the current CCS. A combat filter function takes
+ *    the parameters of a consult script, but returns lines like a CCS, not like
+ *    a consult script. Essentially, this allows the scripter to put a CCS or
+ *    macro into a script.
+ *    (*NOTE: It is unclear how this parameter works in JavaScript.*)
+ * @return `true` if the specified number of adventures were used, or `false`
+ *    otherwise (e.g. not enough adventures, location unavailable, all goals
+ *    satisfied while adventuring, or auto-stop triggered).
+ */
 export function adventure(
-  arg1: Location,
-  arg2: number,
-  filterFunction: string
+  place: Location,
+  adventures: number,
+  filter: string
 ): boolean;
-export function adventure(arg1: number, arg2: Location): boolean;
+
+/**
+ * Spends `adventures` at the `place`, keeping up your current mood & obeying
+ * restore settings.
+ * @param adventures Number of adventures to spend. Any "free" turns (e.g choice
+ *    adventures that don't consume an adventure) or adventures spent in other
+ *    locations (e.g. by a `counterScript` or a `betweenBattleScript`) do not
+ *    count towards this total.
+ * @param place Adventuring location
+ * @param filter Combat action filter. If this contains a semicolon, it is
+ *    interpreted as a macro; otherwise, this is the name of a top-level
+ *    function which modifies the current CCS. A combat filter function takes
+ *    the parameters of a consult script, but returns lines like a CCS, not like
+ *    a consult script. Essentially, this allows the scripter to put a CCS or
+ *    macro into a script.
+ *    (*NOTE: It is unclear how this parameter works in JavaScript.*)
+ * @return `true` if the specified number of adventures were used, or `false`
+ *    otherwise (e.g. not enough adventures, location unavailable, all goals
+ *    satisfied while adventuring, or auto-stop triggered).
+ */
 export function adventure(
-  arg1: number,
-  arg2: Location,
-  filterFunction: string
+  adventures: number,
+  place: Location,
+  filter: string
 ): boolean;
+
+/**
+ * Retrieves the up-to-date internal list of known monsters.
+ *
+ * This function is needed because `$monsters[]` contains a list of monsters
+ * that is fixed when an ASH script begins execution, and does not change while
+ * the script is running.
+ * (*NOTE: It is unclear whether this function is redundant in JavaScript.*)
+ * @return Collection of all monsters that have a non-zero monster ID
+ */
 export function allMonstersWithId(): {[monster: string]: boolean};
+
+/**
+ * Returns a list of all available in-game outfits.
+ */
 export function allNormalOutfits(): string[];
+
+/**
+ * Returns a collection, keyed by monster, with the appearance rate percentages
+ * as decimal values (i.e. a 30%-rate monster has a value of 30.0). This
+ * accounts for combat rate modifiers, olfaction, etc. as best as it can.
+ *
+ * - Bosses, semirare encounters, and other one-time-only monsters have a value
+ *   of 0.0. Ultra-Rare monsters have a value of -1.0.
+ * - Impossible monsters (mostly just monsters that only appear on odd/even
+ *   ascensions) have a value of -2.0. (Properly, as in not-also-olfacted)
+ * - Banished monsters have a value of -3.0.
+ * - Monsters banished by in-game mechanics (such as pygmy janitors in the
+ *   Hidden City) have a value of -4.0 (is often mixed up with 0.0 values).
+ *
+ * If there is a chance of non-combat encounters, that will be listed as the
+ * chance of encountering `none`.
+ * @param place Adventuring location
+ * @return Mapping of monster names to appearance rates as percentages
+ */
+export function appearanceRates(place: Location): {[monster: string]: number};
+
+/**
+ * Returns a collection, keyed by monster, with the appearance rate percentages
+ * as decimal values (i.e. a 30%-rate monster has a value of 30.0). This
+ * accounts for combat rate modifiers, olfaction, etc. as best as it can.
+ *
+ * - Bosses, semirare encounters, and other one-time-only monsters have a value
+ *   of 0.0. Ultra-Rare monsters have a value of -1.0.
+ * - Impossible monsters (mostly just monsters that only appear on odd/even
+ *   ascensions) have a value of -2.0. (Properly, as in not-also-olfacted)
+ * - Banished monsters have a value of -3.0.
+ * - Monsters banished by in-game mechanics (such as pygmy janitors in the
+ *   Hidden City) have a value of -4.0 (is often mixed up with 0.0 values).
+ *
+ * If there is a chance of non-combat encounters, that will be listed as the
+ * chance of encountering `none`.
+ * @param place Adventuring location
+ * @param includeQueue If true, this considers monsters in the adventuring queue
+ *    when determining the likelihood of future encounters. This is better for a
+ *    real prediction of what monster will actually occur. For modeling
+ *    theoretical situations, it is better to not consider the queue.
+ * @return Mapping of monster names to appearance rates as percentages
+ */
 export function appearanceRates(
-  location: Location
-): {[monster: string]: number};
-export function appearanceRates(
-  location: Location,
+  place: Location,
   includeQueue: boolean
 ): {[monster: string]: number};
-export function append(buffer: string, s: string): string;
+
+/**
+ * **This function cannot be used in JavaScript due to limitations of KoLmafia's
+ * type system.**
+ *
+ * Returns a buffer containing `original` with `add` tacked on to the end.
+ * @deprecated
+ * @param original Buffer to add to
+ * @param add String to add on
+ * @return Modified buffer
+ */
+export function append(original: string, add: string): string;
+
+/**
+ * Attacks with your weapon inside a consult script.
+ * @return HTML response from the attack attempt
+ */
 export function attack(): string;
-export function autosell(arg1: Item, arg2: number): boolean;
-export function autosell(arg1: number, arg2: Item): boolean;
+
+/**
+ * Autosells up to `qty` of `item`.
+ * @param item Item to sell
+ * @param qty Quantity to sell
+ * @return `true` if the item(s) were sold, or `false` on failure.
+ *    Note that specifying a higher `qty` than you have of an item, or an item
+ *    that cannot be autosold, will still return `true` as the function has done
+ *    as much as it could.
+ */
+export function autosell(item: Item, qty: number): boolean;
+
+/**
+ * Autosells up to `qty` of `item`.
+ * @param item Item to sell
+ * @param qty Quantity to sell
+ * @return `true` if the item(s) were sold, or `false` on failure.
+ *    Note that specifying a higher `qty` than you have of an item, or an item
+ *    that cannot be autosold, will still return `true` as the function has done
+ *    as much as it could.
+ */
+export function autosell(qty: number, item: Item): boolean;
+
+/**
+ * Returns the autosell price of an item, or a value <= 0 if the item cannot be
+ * autosold.
+ *
+ * For most items that cannot be autosold, such as common Quest Items, this will
+ * return 0. In a few unusual cases where an item can't be autosold, but does
+ * have a defined value detectable by other means (e.g. a mall minimum price
+ * other than 100, or a price in one of the sign restaurants), this will return
+ * a negative value. For example, the laser-broiled pear is an example of a
+ * non-autosellable item with a value detectable both ways.
+ * @param item Item to check the price of
+ * @return Autosell price, or a value <= 0 if the item cannot be autosold.
+ */
 export function autosellPrice(item: Item): number;
-export function availableAmount(arg: Item): number;
+
+/**
+ * Returns the total number available of a given item in all inventory sections
+ * accessible to your character based on current restrictions, including
+ * equipped items (for equipment). In Ronin, this includes free pulls, but does
+ * not include any other items in Hangk's Storage. Once out of Ronin/Hardcore,
+ * if `autoSatisfyWithStorage` is set to true, this includes items in Hangk's
+ * Storage. If `autoSatisfyWithCloset` is set to true, this includes the closet.
+ * If `autoSatisfyWithStash` is set to true, this includes clan stash.
+ * @param item Item to check
+ * @return Available amount, based on current restrictions
+ */
+export function availableAmount(item: Item): number;
+
+/**
+ * Returns all available choice options in the current (or last) choice
+ * adventure the player encountered.
+ * @return Mapping of choice number to choice button text
+ */
 export function availableChoiceOptions(): {[key: number]: string};
+
+/**
+ * Returns all available choice options in the current (or last) choice
+ * adventure the player encountered.
+ * @param spoilers If `true`, also adds KoLmafia-generated spoiler text to each
+ *    choice button text
+ * @return Mapping of choice number to choice button text
+ */
 export function availableChoiceOptions(
   spoilers: boolean
 ): {[key: number]: string};
+
+/**
+ * For the `decision` choice in the current (or last) choice adventure, returns
+ * all selectable items in the dropdown(s) for the choice.
+ * @param decision Choice number
+ * @return Object that represents all `<select>` tags associated with the choice
+ *    number. Each key is the `name` attribute of the `<select>` tag, and each
+ *    value is an object that contains the `value` attribute and text of all
+ *    `<option>` tags inside the `<select>` tag.
+ */
 export function availableChoiceSelectInputs(
   decision: number
-): {[key: string]: {[key: string]: string}};
+): {[selectName: string]: {[optionValue: string]: string}};
+
+/**
+ * For the `decision` choice in the current (or last) choice adventure, returns
+ * the names of all text inputs for the choice.
+ * @param decision Choice number
+ * @return Object whose keys are the `name` attributes of all
+ *    `<input type="text">` tags associated with the choice. The values are
+ *    always empty strings.
+ */
 export function availableChoiceTextInputs(
   decision: number
-): {[key: string]: string};
-export function availablePocket(arg: Monster): number;
-export function availablePocket(arg: Effect): number;
-export function availablePocket(arg: Item): number;
-export function availablePocket(arg: Stat): number;
+): {[inputName: string]: ''};
+
+/**
+ * Returns an unopened pocket number in your Cargo Cultist Shorts that will
+ * result in a fight with the `monster`.
+ * @param monster Monster to search for
+ * @return Pocket number (integer between 1 and 666, inclusive), or 0 if no
+ *    available pockets contain the `monster`
+ */
+export function availablePocket(monster: Monster): number;
+
+/**
+ * Returns an unopened pocket number in your Cargo Cultist Shorts that will give
+ * the most turns of `effect`.
+ * @param effect Effect to search for
+ * @return Pocket number (integer between 1 and 666, inclusive), or 0 if no
+ *    available pockets contain the `effect`
+ */
+export function availablePocket(effect: Effect): number;
+
+/**
+ * Returns an unopened pocket number in your Cargo Cultist Shorts that will give
+ * the largest number of `item`.
+ * @param item Item to look for
+ * @return Pocket number (integer between 1 and 666, inclusive), or 0 if no
+ *    available pockets contain the `item`
+ */
+export function availablePocket(item: Item): number;
+
+/**
+ * Returns an unopened pocket number in your Cargo Cultist Shorts that will give
+ * the most substats for the `stat`.
+ * @param stat Stat to look for
+ * @return Pocket number (integer between 1 and 666, inclusive), or 0 if no
+ *    available pockets give the `stat`
+ */
+export function availablePocket(stat: Stat): number;
+
+/**
+ * Exits batch mode, executes all batch-aware operations that were called after
+ * the last `batchOpen()`. This reduces the number of server hits.
+ *
+ * Batch-aware functions include: `autosell()`, `mallsell()`, and various
+ * `putX()`/`takeX()` functions for the closet, storage, display, and stash.
+ *
+ * Notes:
+ * - Batched functions are not processed in the order they were called.
+ * - `putX()` and `takeX()` for the same source (e.g. closet) cannot be batched
+ *   together inside a single batch operation.
+ * - Each script has its own batch memory. Having an open batch does not affect
+ *   another script's batch operation.
+ *
+ * If the script is aborted, all batched operations are canceled.
+ * @return `true` if all batched operations succeed (i.e. return `true`), or
+ *    `false` if any of them return `false`.
+ */
 export function batchClose(): boolean;
+
+/**
+ * Enters batch mode, allowing all batch-aware operations to be put into a batch
+ * pool. Use `batchOpen()` to exit the batch mode and execute all batch
+ * operations.
+ */
 export function batchOpen(): void;
+
+/**
+ * Bjornifies the `familiar` in a Buddy Bjorn.
+ * @param familiar Familiar to enthrone
+ * @return `true` on success, or `false` if something went wrong (e.g. the
+ *    player does not own the `familiar`, or does not have a Buddy Bjorn)
+ */
 export function bjornifyFamiliar(familiar: Familiar): boolean;
+
+/**
+ * @return Whether the current player has unlocked the Black Market
+ */
 export function blackMarketAvailable(): boolean;
+
+/**
+ * Accesses fields of your current modifiers for all of your current equipment
+ * and effects. This uses the same mechanism that lets KoLmafia decide whether
+ * you can adventure underwater, or how many songs you can keep in your head.
+ * @param modifier Modifier name
+ * @return Modifier value
+ */
 export function booleanModifier(modifier: string): boolean;
-export function booleanModifier(arg: string, modifier: string): boolean;
-export function booleanModifier(arg: Item, modifier: string): boolean;
-export function booleanModifier(arg: Effect, modifier: string): boolean;
+
+/**
+ * Extracts a modifier from `source` and parses it as a boolean value.
+ *
+ * The modifier string can be any of the following:
+ *
+ * - Item name, e.g. `"pail"`
+ * - Item ID (integer) surrounded by brackets, e.g. `"[123]"`
+ * - String of the form `<type>:<name>`, where...
+ *   - `<type>` is a modifier source type, e.g. `Item`, `Effect`, `Skill`
+ *   - `<name>` is the name of the item/effect/skill/etc.
+ * @param source Modifier source string
+ * @param modifier Modifier name
+ * @return Modifier value
+ */
+export function booleanModifier(source: string, modifier: string): boolean;
+
+/**
+ * Accesses a boolean modifier provided by the `item`.
+ * @param item Item to check
+ * @param modifier Modifier name
+ * @return Modifier value
+ */
+export function booleanModifier(item: Item, modifier: string): boolean;
+
+/**
+ * Accesses a boolean modifier provided by the `effect`.
+ * @param effect Effect to check
+ * @param modifier Modifier name
+ * @return Modifier value
+ */
+export function booleanModifier(effect: Effect, modifier: string): boolean;
+
+/**
+ * Returns the buffed value of the stat used to calculate your hit chance.
+ *
+ * Note: Melee weapons use muscle to calculate hit change, and ranged weapons
+ * use moxie.
+ * @return Buffed value of the stat
+ */
 export function buffedHitStat(): number;
-export function bufferToFile(var1: string, var2: string): boolean;
+
+/**
+ * Saves a string to a text file.
+ * @version r20629
+ * @param data Contents of the file
+ * @param filepath Path to the text file to save
+ * @return `true` on success, `false` on failure
+ */
+export function bufferToFile(data: string, filepath: string): boolean;
+
+/**
+ * Attempts to buy one of `item`, using your meat in inventory.
+ * @param item Item to purchase
+ * @return `true` on success, `false` on failure
+ */
 export function buy(item: Item): boolean;
-export function buy(arg1: Item, arg2: number): boolean;
-export function buy(arg1: Item, arg2: number, arg3: number): number;
-export function buy(arg1: number, arg2: Item): boolean;
-export function buy(arg1: number, arg2: Item, arg3: number): number;
-export function buy(arg1: Coinmaster, arg2: number, arg3: Item): boolean;
-export function buyPrice(master: Coinmaster, item: Item): number;
+
+/**
+ * Attempts to buy `qty` of `item`, using your meat in inventory.
+ * @param item Item to purchase
+ * @param qty Number to purchase. If this is less than 1, the function will
+ *    succeed without buying anything.
+ * @return `true` on success, `false` on failure
+ */
+export function buy(item: Item, qty: number): boolean;
+
+/**
+ * Attempts to buy `qty` of `item`, using your meat in inventory.
+ * @param item Item to purchase
+ * @param qty Number to purchase. If this is less than 1, the function will
+ *    succeed without buying anything.
+ * @param price Maximum price to spend per item. If this is less than 1, the
+ *    function will always buy `qty` of `item`, regardless of prices.
+ * @return Number of items purchased
+ */
+export function buy(item: Item, qty: number, price: number): number;
+
+/**
+ * Attempts to buy `qty` of `item`, using your meat in inventory.
+ * @param qty Number to purchase. If this is less than 1, the function will
+ *    succeed without buying anything.
+ * @param item Item to purchase
+ * @return `true` on success, `false` on failure
+ */
+export function buy(qty: number, item: Item): boolean;
+
+/**
+ * Attempts to buy `qty` of `item`, using your meat in inventory.
+ * @param qty Number to purchase. If this is less than 1, the function will
+ *    succeed without buying anything.
+ * @param item Item to purchase
+ * @param price Maximum price to spend per item. If this is less than 1, the
+ *    function will always buy `qty` of `item`, regardless of prices.
+ * @return Number of items purchased
+ */
+export function buy(qty: number, item: Item, price: number): number;
+
+/**
+ * Attempts to buy `qty` of `item` from a coinmaster, using the currency
+ * accepted by the coinmaster.
+ * @param coinmaster Coinmaster to buy from
+ * @param qty Number to purchase. If this is less than 1, the function will
+ *    succeed without buying anything.
+ * @param item Item to purchase
+ * @return `true` on success, `false` on failure
+ */
+export function buy(coinmaster: Coinmaster, qty: number, item: Item): boolean;
+
+/**
+ * Returns the number of currency (tokens) that the `coinmaster` will give you
+ * if you sell `item` to them.
+ * @param coinmaster Coinmaster to check
+ * @param item Item to check
+ * @return Number of currency (tokens)
+ */
+export function buyPrice(coinmaster: Coinmaster, item: Item): number;
+
+/**
+ * Attempts to buy one of `item`, using your meat in inventory.
+ * @param item Item to purchase
+ * @return `true` on success, `false` on failure
+ */
 export function buyUsingStorage(item: Item): boolean;
-export function buyUsingStorage(arg1: Item, arg2: number): boolean;
-export function buyUsingStorage(arg1: Item, arg2: number, arg3: number): number;
-export function buyUsingStorage(arg1: number, arg2: Item): boolean;
-export function buyUsingStorage(arg1: number, arg2: Item, arg3: number): number;
-export function buysItem(master: Coinmaster, item: Item): boolean;
+
+/**
+ * Attempts to buy `qty` of `item`, using your meat in inventory.
+ * @param item Item to purchase
+ * @param qty Number to purchase. If this is less than 1, the function will
+ *    succeed without buying anything.
+ * @return `true` on success, `false` on failure
+ */
+export function buyUsingStorage(item: Item, qty: number): boolean;
+
+/**
+ * Attempts to buy `qty` of `item`, using your meat in inventory.
+ * @param item Item to purchase
+ * @param qty Number to purchase. If this is less than 1, the function will
+ *    succeed without buying anything.
+ * @param price Maximum price to spend per item. If this is less than 1, the
+ *    function will always buy `qty` of `item`, regardless of prices.
+ * @return Number of items purchased
+ */
+export function buyUsingStorage(item: Item, qty: number, price: number): number;
+
+/**
+ * Attempts to buy `qty` of `item`, using your meat in inventory.
+ * @param qty Number to purchase. If this is less than 1, the function will
+ *    succeed without buying anything.
+ * @param item Item to purchase
+ * @return `true` on success, `false` on failure
+ */
+export function buyUsingStorage(qty: number, item: Item): boolean;
+
+/**
+ * Attempts to buy `qty` of `item`, using your meat in inventory.
+ * @param qty Number to purchase. If this is less than 1, the function will
+ *    succeed without buying anything.
+ * @param item Item to purchase
+ * @param price Maximum price to spend per item. If this is less than 1, the
+ *    function will always buy `qty` of `item`, regardless of prices.
+ * @return Number of items purchased
+ */
+export function buyUsingStorage(qty: number, item: Item, price: number): number;
+
+/**
+ * Checks if the coinmaster buys the given item.
+ * @param coinmaster Coinmaster to check
+ * @param item Item to check
+ * @return Whether the coinmaster buys the item
+ */
+export function buysItem(coinmaster: Coinmaster, item: Item): boolean;
+
+/**
+ * Checks if the player is not subject to dietary restrictions that forbid
+ * drinking booze, e.g. Path of the Plumber, Teetotaler, or Oxygenarian.
+ */
 export function canDrink(): boolean;
+
+/**
+ * Checks if the player is not subject to dietary restrictions that forbid
+ * eating food, e.g. Boozetafarian or Oxygenarian.
+ */
 export function canEat(): boolean;
+
+/**
+ * Checks if the player can equip the item, based on class, path, and stat
+ * requirements.
+ * This does not check if the player actually has the item in inventory.
+ *
+ * If `item` is a familiar equipment, this checks if the currently active
+ * familiar can equip it.
+ * This returns `false` for items that are not equipments.
+ * @param item Item to check
+ */
 export function canEquip(item: Item): boolean;
+
+/**
+ * Checks if a familiar can equip the item.
+ * This does not check if the player actually has the item in inventory.
+ *
+ * Returns `false` if either the familiar or item is `none`, or
+ * @param familiar Familiar to check
+ * @param item Item to check
+ */
 export function canEquip(familiar: Familiar, item: Item): boolean;
-export function canFaxbot(arg: Monster): boolean;
+
+/**
+ * Checks if the monster can be faxed by any of the faxbots known to KoLmafia.
+ * This does not check if the faxbot(s) are online.
+ * @param monster Monster to check
+ */
+export function canFaxbot(monster: Monster): boolean;
+
+/**
+ * Checks if the player is free of Ronin/Hardcore restrictions
+ * @return `true` if player is neither in Ronin nor Hardcore
+ */
 export function canInteract(): boolean;
+
+/**
+ * Checks if the player can use Pickpocket during the current combat round
+ * (i.e. has the Pickpocket button in the fight page).
+ * This is intended for use inside custom combat scripts only.
+ */
 export function canStillSteal(): boolean;
+
+/**
+ * Checks if the player has access to Little Canadia.
+ */
 export function canadiaAvailable(): boolean;
-export function candyForTier(arg: number): Item[];
-export function candyForTier(arg1: number, arg2: number): Item[];
-export function ceil(arg: number): number;
+
+/**
+ * Retrieves an array of all candies matching the given `tier`.
+ * Chocolates are allowed, and blacklisted candies are ignored.
+ *
+ * The returned array contains one of each matching item, even if the player has
+ * multiples of said item.
+ *
+ * If the player is subject to Ronin/Hardcore restrictions, this only checks
+ * candy in the inventory.
+ * @param tier Integer between 0 and 3, inclusive
+ * @return Array of all candies with the given `tier`
+ */
+export function candyForTier(tier: number): Item[];
+
+/**
+ * Retrieves an array of all candies matching the given `tier` and `flags`.
+ *
+ * Supported flags are:
+ *
+ * | Flag              | Value | Details                           |
+ * |-------------------|-------|-----------------------------------|
+ * | `CHECK_AVAILABLE` | 0x1 | Only include candies in inventory.  |
+ * | `ALLOW_CHOCOLATE` | 0x2 | Do not exclude chocolates.          |
+ * | `NO_BLACKLIST`    | 0x4 | Do not exclude blacklisted candies. |
+ *
+ * The returned array contains one of each matching item, even if the player has
+ * multiples of said item.
+ * @param tier Integer between 0 and 3, inclusive
+ * @param flags Bit field containing flags
+ * @return Array of all candies with the given `tier`
+ */
+export function candyForTier(tier: number, flags: number): Item[];
+
+/**
+ * Rounds up a number to the nearest integer.
+ * @deprecated Use `Math.ceil()` instead.
+ */
+export function ceil(value: number): number;
+
+/**
+ * Sets your mind-control device (MCD) to the specified `level`.
+ *
+ * If the request fails, this throws a string (`"Script interrupted."`).
+ * @param level Integer between 0 and 10 (11 if you have access to Little
+ *    Canadia), inclusive.
+ * @return Always returns `true`.
+ * @throws {string} If the request fails (e.g. `level` is out of bounds)
+ */
 export function changeMcd(level: number): boolean;
+
+/**
+ * Returns the character in a string at the given index.
+ * @deprecated Use `String.prototype.charAt()` instead.
+ * @param source
+ * @param index
+ */
 export function charAt(source: string, index: number): string;
-export function chatClan(messageValue: string): void;
-export function chatClan(messageValue: string, recipientValue: string): void;
-export function chatMacro(macroValue: string): void;
-export function chatNotify(messageValue: string, colorValue: string): void;
-export function chatPrivate(recipientValue: string, messageValue: string): void;
+
+/**
+ * Posts a chat message to the "/clan" channel.
+ * This does nothing if the player has not passed the Literacy test, or if
+ * scripted chat has been disabled due to improper use.
+ * @param message Chat message
+ */
+export function chatClan(message: string): void;
+
+/**
+ * Posts a chat message to a clan chat channel.
+ * This does nothing if the player has not passed the Literacy test, or if
+ * scripted chat has been disabled due to improper use.
+ *
+ * If `channel` is not one of "clan", "hobopolis", "slimetube", "dread", or
+ * "hauntedhouse", KoLmafia will disable all scripted chat for the rest of the
+ * session. This is a safety measure to prevent spamming.
+ * @param message Chat message
+ * @param channel Channel name (case sensitive)
+ */
+export function chatClan(message: string, channel: string): void;
+
+/**
+ * Submits a chat macro.
+ * This does nothing if the player has not passed the Literacy test, or if
+ * scripted chat has been disabled due to improper use.
+ *
+ * If the macro attempts to post in a chat channel other than one of "clan",
+ * "hobopolis", "slimetube", "dread", or "hauntedhouse", KoLmafia will disable
+ * all scripted chat for the rest of the session. This is a safety measure to
+ * prevent spamming.
+ * @param macro Chat macro
+ */
+export function chatMacro(macro: string): void;
+
+/**
+ * Posts a chat message visible only to the player.
+ * This can be used to notify a player without using the gCLI.
+ * @param message Message to print
+ * @param color Message color
+ */
+export function chatNotify(message: string, color: string): void;
+
+/**
+ * Sends a private chat message to another player.
+ * @param recipent Target player name
+ * @param message Message to send
+ */
+export function chatPrivate(recipent: string, message: string): void;
+
+/**
+ * Attempts to consume a chewable (spleen) item.
+ * @param item Item to chew
+ * @return `true` if `item` is a chewable item, `false` otherwise.
+ *    This returns `true` even if the player failed to consume the item.
+ */
 export function chew(item: Item): boolean;
-export function chew(arg1: Item, arg2: number): boolean;
-export function chew(arg1: number, arg2: Item): boolean;
+
+/**
+ * Attempts to consume a given number of chewable (spleen) item(s).
+ * @param item Item to chew
+ * @param qty Number of `item` to chew
+ * @return `true` if `item` is a chewable item, `false` otherwise.
+ *    This returns `true` even if the player failed to consume the item.
+ */
+export function chew(item: Item, qty: number): boolean;
+
+/**
+ * Attempts to consume a given number of chewable (spleen) item(s).
+ * @param qty Number of `item` to chew
+ * @param item Item to chew
+ * @return `true` if `item` is a chewable item, `false` otherwise.
+ *    This returns `true` even if the player failed to consume the item.
+ */
+export function chew(qty: number, item: Item): boolean;
+
+/**
+ * Checks if the player has just finished a fight which leads to a choice
+ * adventure, which should be handled with `runChoice()`.
+ */
 export function choiceFollowsFight(): boolean;
-export function classModifier(arg: string, modifier: string): Class;
-export function classModifier(arg: Item, modifier: string): Class;
-export function clear(arg: unknown): void;
-export function cliExecute(string: string): boolean;
+
+/**
+ * Extracts a modifier from `source` and parses it as a `Class` object.
+ *
+ * The modifier string can be any of the following:
+ *
+ * - Item name, e.g. `"pail"`
+ * - Item ID (integer) surrounded by brackets, e.g. `"[123]"`
+ * - String of the form `<type>:<name>`, where...
+ *   - `<type>` is a modifier source type, e.g. `Item`, `Effect`, `Skill`
+ *   - `<name>` is the name of the item/effect/skill/etc.
+ * @param source Modifier source string
+ * @param modifier Modifier name to parse, typically `"Class"`
+ * @return Value of the modifier, parsed as a `Class`
+ */
+export function classModifier(source: string, modifier: string): Class;
+
+/**
+ * Extracts a modifier on an `item` and parses it as a `Class` object.
+ * By passing `"Class"` as the modifier name, this function can be used to
+ * retrieve the character class of a class-specific item.
+ * @param item Item to check
+ * @param modifier Modifier name to parse, typically `"Class"`
+ * @return Value of the modifier, parsed as a `Class`
+ */
+export function classModifier(item: Item, modifier: string): Class;
+
+/**
+ * Empties the given aggregate (map).
+ *
+ * **NOTE: Because the internal library function actually "clears" a copy of the
+ * aggregate, this has no effect on the JavaScript runtime.**
+ * @deprecated This function has no practical use for JavaScript. Instead, use
+ *    JS-native methods for emptying arrays, sets, and maps.
+ * @param map Aggregate to empty
+ */
+export function clear(map: unknown): void;
+
+/**
+ * Executes a gCLI command.
+ * @param command gCLI command
+ * @return Whether the command was successfully executed
+ */
+export function cliExecute(command: string): boolean;
+
+/**
+ * Executes a gCLI command and captures its output as a string
+ * @param command gCLI command
+ * @return gCLI output from the command
+ */
 export function cliExecuteOutput(string: string): string;
-export function closetAmount(arg: Item): number;
+
+/**
+ * Returns the amount of `item` in your closet.
+ * @param item Item to check
+ */
+export function closetAmount(item: Item): number;
+
+/**
+ * Returns the total of passive MP cost modifiers available in combat.
+ */
 export function combatManaCostModifier(): number;
+
+/**
+ * Returns the current Combat Rate modifier as a percentage.
+ * For example, if your total Combat Rate modifier is -15%, this returns -15.0.
+ */
 export function combatRateModifier(): number;
+
+/**
+ * Checks if the `source` string contains the `search` substring.
+ * @deprecated Use `String.prototype.includes()` instead
+ * @param source Source string to search in
+ * @param search Target substring to search for
+ * @return Whether `source` contains `search`
+ */
 export function containsText(source: string, search: string): boolean;
+
+/**
+ * Visits the Council of Loathing.
+ */
 export function council(): void;
-export function count(arg: unknown): number;
+
+/**
+ * Returns the number of elements in the aggregate (map).
+ * @deprecated Use JavaScript native properties and methods instead, e.g.
+ *    `Array.prototype.length` or `Object.keys(obj).length`.
+ * @param map Aggregate
+ */
+export function count(map: unknown): number;
+
+/**
+ * Crafts items using a crafting type.
+ * @param mode One of `"combine"`, `"cook"`, `"cocktailcraft"`, `"smith"`,
+ *    `"jewelry"`
+ * @param count Number of each ingredient to use
+ * @param item1 Ingredient 1
+ * @param item2 Ingredient 2
+ * @return Number of each ingredient actually consumed.
+ *    This is usually equal to `count`, but may be less if the crafting failed
+ *    or was aborted, e.g. because your Chef-in-the-box exploded.
+ */
 export function craft(
-  modeValue: string,
-  countValue: number,
+  mode: string,
+  count: number,
   item1: Item,
   item2: Item
 ): number;
-export function craftType(arg: Item): string;
-export function creatableAmount(arg: Item): number;
-export function creatableTurns(itemId: Item): number;
-export function creatableTurns(itemId: Item, count: number): number;
+
+/**
+ * Crafting types returned by `craftType()`
+ * @version r20630
+ */
+type CraftType =
+  | 'chewing gum'
+  | '[cannot be created]'
+  | 'Cooking (fancy) (Pastamastery)'
+  | 'single-use (Unavailable in Beecore)'
+  | 'Meatpasting'
+  | 'Meatsmithing'
+  | 'Meatpasting (not untinkerable)'
+  | 'rolling pin/unrolling pin'
+  | 'Cooking'
+  | 'single-use'
+  | 'Mixing'
+  | 'Meatsmithing (not Innabox) (Super-Advanced Meatsmithing)'
+  | 'Meatsmithing (not Innabox) (Armorcraftiness)'
+  | 'Cooking (fancy) (The Way of Sauce)'
+  | 'Cooking (fancy) (Advanced Saucecrafting)'
+  | 'multi-use (Unavailable in Beecore)'
+  | 'Crackpot Mystic'
+  | 'Cooking (fancy)'
+  | 'star chart'
+  | 'Mixing (fancy) (Advanced Cocktailcrafting)'
+  | 'Jewelry-making pliers'
+  | 'Mixing (fancy)'
+  | "Mixing (St. Sneaky Pete's Day only)"
+  | 'Supertinkering'
+  | 'star chart (Torso Awaregness)'
+  | 'Meatsmithing (females only)'
+  | 'Meatsmithing (males only)'
+  | 'Meatsmithing (not Innabox) (females only) (Armorcraftiness)'
+  | 'Meatsmithing (not Innabox) (males only) (Armorcraftiness)'
+  | "Uncle Crimbo's Mobile Home (Crimbo 2007)"
+  | 'Malus of Forethought'
+  | "Nash Crosby's Still"
+  | 'Mixing (fancy) (Superhuman Cocktailcrafting)'
+  | 'Cooking (fancy) (Transcendental Noodlecraft)'
+  | 'multi-use'
+  | "Uncle Crimbo's Mobile Home (Crimboween 2006)"
+  | 'Rodoric, the Staffcrafter'
+  | 'multi-use (Torso Awaregness)'
+  | 'Jewelry-making pliers (Really Expensive Jewelrycrafting)'
+  | 'Mixing (Advanced Cocktailcrafting)'
+  | 'Meatsmithing (depleted Grimacite hammer)'
+  | 'Cooking (fancy) (Deep Saucery)'
+  | 'Cooking (fancy) (Tempuramancy)'
+  | 'Mixing (fancy) (Salacious Cocktailcrafting)'
+  | 'Cooking (Advanced Saucecrafting)'
+  | 'multi-use (Torso Awaregness) (Unavailable in Beecore)'
+  | 'single-use (tenderizing hammer) (Super-Advanced Meatsmithing)'
+  | 'sugar sheet'
+  | 'sugar sheet (Torso Awaregness)'
+  | 'Grandma Sea Monkee'
+  | 'Phineas'
+  | 'Summon Clip Art'
+  | "Uncle Crimbo's Futuristic Trailer (Crimboku 2012)"
+  | "Jarlsberg's Kitchen (Boil)"
+  | "Jarlsberg's Kitchen (Fry)"
+  | "Jarlsberg's Kitchen (Blend)"
+  | "Jarlsberg's Kitchen (Slice)"
+  | "Jarlsberg's Kitchen (Chop)"
+  | "Jarlsberg's Kitchen (Bake)"
+  | "Jarlsberg's Kitchen (Grill)"
+  | "Jarlsberg's Kitchen (Curdle)"
+  | "Jarlsberg's Kitchen (Freeze)"
+  | "Jarlsberg's Kitchen"
+  | 'Shop Class'
+  | 'Art Class'
+  | 'Chemistry Class'
+  | 'Worse Homes and Gardens'
+  | 'Beer Garden'
+  | 'Winter Garden'
+  | "Rumpelstiltskin's Workshop"
+  | 'Xiblaxian 5D printer'
+  | 'shrine to the Barrel god'
+  | 'Elemental International Airport Duty Free Shop'
+  | 'Cooking (Patent Medicine)'
+  | 'Source Terminal'
+  | 'multi-use (Eldritch Intellect)'
+  | 'Cooking (Eldritch Intellect)'
+  | 'Mixing (Eldritch Intellect)'
+  | 'Crimbo Lumps Shop (Crimbo 2016)'
+  | 'globs of wax'
+  | 'Spacegate Equipment Requisition'
+  | 'spant pieces'
+  | 'metal meteoroid'
+  | 'XO Shop'
+  | 'burning newspaper'
+  | 'Fantasy Realm Welcome Center'
+  | 'Mad Sliemce'
+  | 'Kramco Sausage-o-Matic'
+  | 'Mixing (Tiki Mixology)'
+  | "Kringle's workshop";
+
+/**
+ * Returns a string indicating how the item can be crafted.
+ */
+export function craftType(item: Item): CraftType;
+
+/**
+ * Returns how many of `item` can be created using your current inventory,
+ * skills, etc.
+ * @param item Item to check
+ * @return Amount of `item` that can be created
+ */
+export function creatableAmount(item: Item): number;
+
+/**
+ * Returns the number of Adventures required to create one of `item`.
+ *
+ * This does NOT consider any free crafting turns that are currently available.
+ * @param item Item to check
+ * @return Number of turns required to craft one of `item`
+ */
+export function creatableTurns(item: Item): number;
+
+/**
+ * Returns the number of Adventures required to create `count` of `item`.
+ * This accounts for recipes that create multiples of `item`, e.g. Advanced
+ * Saucecrafting potions created by a Sauceror.
+ *
+ * This does NOT consider any free crafting turns that are currently available.
+ * @param item Item to check
+ * @param count Number of `item` to craft
+ * @return Number of turns required to craft `count` of `item`
+ */
+export function creatableTurns(item: Item, count: number): number;
+
+/**
+ * Returns the number of Adventures required to create `count` of `item`.
+ * This accounts for recipes that create multiples of `item`, e.g. Advanced
+ * Saucecrafting potions created by a Sauceror.
+ * @param item Item to check
+ * @param count Number of `item` to craft
+ * @param useFreeCrafting If `true`, deducts any free crafting turns that are
+ *    available from the returned total
+ * @return Number of turns required to craft `count` of `item`
+ */
 export function creatableTurns(
-  itemId: Item,
+  item: Item,
   count: number,
-  freeCrafting: boolean
+  useFreeCrafting: boolean
 ): number;
+
+/**
+ * Creates one of `item`, automatically acquiring any required ingredients.
+ * @param item Item to create
+ * @return Whether the item was successfully created
+ */
 export function create(item: Item): boolean;
-export function create(arg1: Item, arg2: number): boolean;
-export function create(arg1: number, arg2: Item): boolean;
+
+/**
+ * Creates `qty` of `item`, automatically acquiring any required ingredients.
+ * @param item Item to create
+ * @param qty Number of items to create
+ * @return Whether the items were successfully created
+ */
+export function create(item: Item, qty: number): boolean;
+
+/**
+ * Creates `qty` of `item`, automatically acquiring any required ingredients.
+ * @param qty Number of items to create
+ * @param item Item to create
+ * @return Whether the items were successfully created
+ */
+export function create(qty: number, item: Item): boolean;
+
+/**
+ * Returns the stat that is currently used to determine the player's hit chance.
+ */
 export function currentHitStat(): Stat;
+
+/**
+ * Returns the current MCD level (e.g. Detuned Radio).
+ */
 export function currentMcd(): number;
+
+/**
+ * Returns all available PvP stances as a mapping of stance name to numeric ID.
+ */
 export function currentPvpStances(): {[key: string]: number};
+
+/**
+ * Returns the current Rad Sickness level (in the Nuclear Autumn challenge
+ * path).
+ */
 export function currentRadSickness(): number;
+
+/**
+ * Returns the current combat round number.
+ */
 export function currentRound(): number;
 export function dadSeaMonkeeWeakness(arg: number): Element;
 export function dailySpecial(): Item;
@@ -389,6 +1341,11 @@ export function mallPrices(category: string, tiers: string): number;
 export function manaCostModifier(): number;
 export function mapToFile(var1: unknown, var2: string): boolean;
 export function mapToFile(var1: unknown, var2: string, var3: boolean): boolean;
+
+/**
+ * Returns the largest number among the given arguments.
+ * @deprecated Use `Math.max()`
+ */
 export function max(arg1: number, ...args: number[]): number;
 export function maximize(
   maximizerStringValue: string,
@@ -418,6 +1375,11 @@ export function meatDrop(): number;
 export function meatDrop(arg: Monster): number;
 export function meatDropModifier(): number;
 export function meatPockets(): {[key: number]: number};
+
+/**
+ * Returns the smallest number among the given arguments.
+ * @deprecated Use `Math.min()`
+ */
 export function min(arg1: number, ...args: number[]): number;
 export function minstrelInstrument(): Item;
 export function minstrelLevel(): number;
