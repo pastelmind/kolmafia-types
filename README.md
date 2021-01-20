@@ -1,2 +1,3 @@
 # kolmafia-types
-TypeScript type declarations for KoLmafia. Alternative to kolmafia-js
+
+TypeScript type declarations for KoLmafia. Alternative to kolmafia-js.

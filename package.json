@@ -1,0 +1,36 @@
+{
+  "name": "kolmafia-types",
+  "version": "0.0.0",
+  "description": "TypeScript type declarations for KoLmafia. Alternative to kolmafia-js.",
+  "types": "src/index.d.ts",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "lint": "gts lint",
+    "fix": "gts fix",
+    "test": "tsd",
+    "posttest": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pastelmind/kolmafia-types.git"
+  },
+  "keywords": [
+    "kolmafia",
+    "type definition",
+    "types",
+    "typescript"
+  ],
+  "author": "Yehyoung Kang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pastelmind/kolmafia-types/issues"
+  },
+  "homepage": "https://github.com/pastelmind/kolmafia-types#readme",
+  "devDependencies": {
+    "gts": "^3.1.0",
+    "tsd": "^0.14.0",
+    "typescript": "^4.0.3"
+  }
+}
