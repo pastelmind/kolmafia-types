@@ -1,5 +1,7 @@
 # kolmafia-types
 
+[![Test & Lint status](https://github.com/pastelmind/kolmafia-types/workflows/Test%20&%20Lint/badge.svg)](https://github.com/pastelmind/kolmafia-types/actions?query=workflow%3A%22Test+%26+Lint%22)
+
 Type definitions for writing TypeScript/JavaScript code that runs in [KoLmafia](https://sourceforge.net/projects/kolmafia).
 
 This is a drop-in replacement for [kolmafia-js](https://github.com/Loathing-Associates-Scripting-Society/kolmafia-js).
