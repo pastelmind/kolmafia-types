@@ -62,8 +62,8 @@ declare global {
   }
 
   class Effect {
-    static get(name: string): Effect;
-    static get(names: string[]): Effect[];
+    static get(nameOrId: number | string): Effect;
+    static get(namesAndIds: (number | string)[]): Effect[];
     static all(): Effect[];
     /** Name */
     readonly name: string;
@@ -94,8 +94,8 @@ declare global {
   }
 
   class Familiar {
-    static get(name: string): Familiar;
-    static get(names: string[]): Familiar[];
+    static get(nameOrId: number | string): Familiar;
+    static get(namesAndIds: (number | string)[]): Familiar[];
     static all(): Familiar[];
     /** Hatchling */
     readonly hatchling: Item;
@@ -174,8 +174,8 @@ declare global {
   }
 
   class Item {
-    static get(name: string): Item;
-    static get(names: string[]): Item[];
+    static get(nameOrId: number | string): Item;
+    static get(namesAndIds: (number | string)[]): Item[];
     static all(): Item[];
     /** The name of this Item. */
     readonly name: string;
@@ -303,8 +303,8 @@ declare global {
   }
 
   class Monster {
-    static get(name: string): Monster;
-    static get(names: string[]): Monster[];
+    static get(nameOrId: number | string): Monster;
+    static get(namesAndIds: (number | string)[]): Monster[];
     static all(): Monster[];
     /** Name */
     readonly name: string;
@@ -375,8 +375,8 @@ declare global {
   }
 
   class Servant {
-    static get(name: string): Servant;
-    static get(names: string[]): Servant[];
+    static get(nameOrId: number | string): Servant;
+    static get(namesAndIds: (number | string)[]): Servant[];
     static all(): Servant[];
     /** Id */
     readonly id: number;
@@ -399,8 +399,8 @@ declare global {
   }
 
   class Skill {
-    static get(name: string): Skill;
-    static get(names: string[]): Skill[];
+    static get(nameOrId: number | string): Skill;
+    static get(namesAndIds: (number | string)[]): Skill[];
     static all(): Skill[];
     /** Name */
     readonly name: string;
@@ -439,8 +439,8 @@ declare global {
   }
 
   class Thrall {
-    static get(name: string): Thrall;
-    static get(names: string[]): Thrall[];
+    static get(nameOrId: number | string): Thrall;
+    static get(namesAndIds: (number | string)[]): Thrall[];
     static all(): Thrall[];
     /** Id */
     readonly id: number;

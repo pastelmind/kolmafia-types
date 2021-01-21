@@ -39,7 +39,8 @@ expectError(Coinmaster.get(Symbol('foo')));
 expectError(Coinmaster.get({}));
 
 expectType<Effect>(Effect.get('foo'));
-expectType<Effect[]>(Effect.get(['foo', 'bar']));
+expectType<Effect>(Effect.get(5));
+expectType<Effect[]>(Effect.get(['foo', 'bar', 123]));
 expectType<Effect[]>(Effect.all());
 
 expectError(Effect.get());
@@ -61,7 +62,8 @@ expectError(Element.get(Symbol('foo')));
 expectError(Element.get({}));
 
 expectType<Familiar>(Familiar.get('foo'));
-expectType<Familiar[]>(Familiar.get(['foo', 'bar']));
+expectType<Familiar>(Familiar.get(5));
+expectType<Familiar[]>(Familiar.get(['foo', 'bar', 123]));
 expectType<Familiar[]>(Familiar.all());
 
 expectError(Familiar.get());
@@ -72,7 +74,8 @@ expectError(Familiar.get(Symbol('foo')));
 expectError(Familiar.get({}));
 
 expectType<Item>(Item.get('foo'));
-expectType<Item[]>(Item.get(['foo', 'bar']));
+expectType<Item>(Item.get(5));
+expectType<Item[]>(Item.get(['foo', 'bar', 123]));
 expectType<Item[]>(Item.all());
 
 expectError(Item.get());
@@ -94,7 +97,8 @@ expectError(Location.get(Symbol('foo')));
 expectError(Location.get({}));
 
 expectType<Monster>(Monster.get('foo'));
-expectType<Monster[]>(Monster.get(['foo', 'bar']));
+expectType<Monster>(Monster.get(5));
+expectType<Monster[]>(Monster.get(['foo', 'bar', 123]));
 expectType<Monster[]>(Monster.all());
 
 expectError(Monster.get());
@@ -116,7 +120,8 @@ expectError(Phylum.get(Symbol('foo')));
 expectError(Phylum.get({}));
 
 expectType<Servant>(Servant.get('foo'));
-expectType<Servant[]>(Servant.get(['foo', 'bar']));
+expectType<Servant>(Servant.get(5));
+expectType<Servant[]>(Servant.get(['foo', 'bar', 123]));
 expectType<Servant[]>(Servant.all());
 
 expectError(Servant.get());
@@ -127,7 +132,8 @@ expectError(Servant.get(Symbol('foo')));
 expectError(Servant.get({}));
 
 expectType<Skill>(Skill.get('foo'));
-expectType<Skill[]>(Skill.get(['foo', 'bar']));
+expectType<Skill>(Skill.get(5));
+expectType<Skill[]>(Skill.get(['foo', 'bar', 123]));
 expectType<Skill[]>(Skill.all());
 
 expectError(Skill.get());
@@ -160,7 +166,8 @@ expectError(Stat.get(Symbol('foo')));
 expectError(Stat.get({}));
 
 expectType<Thrall>(Thrall.get('foo'));
-expectType<Thrall[]>(Thrall.get(['foo', 'bar']));
+expectType<Thrall>(Thrall.get(5));
+expectType<Thrall[]>(Thrall.get(['foo', 'bar', 123]));
 expectType<Thrall[]>(Thrall.all());
 
 expectError(Thrall.get());
