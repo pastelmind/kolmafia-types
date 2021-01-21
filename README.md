@@ -6,6 +6,8 @@ Type definitions for writing TypeScript/JavaScript code that runs in [KoLmafia](
 
 This is a drop-in replacement for [kolmafia-js](https://github.com/Loathing-Associates-Scripting-Society/kolmafia-js).
 
+Note: kolmafia-types requires TypeScript 3.0 or above.
+
 ## Installation
 
 To use kolmafia-types in your project, you need a package manager that supports package aliases:
