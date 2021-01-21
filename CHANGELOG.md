@@ -7,9 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.2] - 2020-01-21
+
 ### Added
 
-- Added (partial) type definitions for some popular ASH scripts:
+- Added (partial) type definitions for some popular ASH scripts (#8):
   - CanAdv r109
   - EatDrink 3.2
   - PriceAdvisor 1.62
@@ -17,14 +19,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Add TypeScript version requirement (>= 3.0)
+- Add TypeScript version requirement (>= 3.0) (#1)
 
 ### Fixed
 
-- Use `unknown` instead of `any`
+- Use `unknown` instead of `any` (#1)
 - The `get()` static method of `Effect`, `Item`, `Familiar`, `Item`, `Monster`,
   `Servant`, `Skill`, and `Thrall` now accept numbers (integer IDs) in addition
-  to strings (names).
+  to strings (names). (#4)
 
 ## [0.0.1] - 2020-01-20
 
@@ -32,5 +34,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[unreleased]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.1...HEAD
+[unreleased]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/pastelmind/kolmafia-types/releases/tag/v0.0.1
