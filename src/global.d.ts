@@ -12,17 +12,11 @@ export {};
 // KoLmafia's source code. Because kolmafia-js does not come with a license as
 // of writing, I post none here.
 
-declare abstract class MafiaClass {
-  static get<T>(name: string): T;
-  static get<T>(names: string[]): T[];
-  static all<T>(): T[];
-}
-
 declare global {
-  class Bounty extends MafiaClass {
-    static get<T = Bounty>(name: string): T;
-    static get<T = Bounty>(names: string[]): T[];
-    static all<T = Bounty>(): T[];
+  class Bounty {
+    static get(name: string): Bounty;
+    static get(names: string[]): Bounty[];
+    static all(): Bounty[];
     /** Plural */
     readonly plural: string;
     /** Type */
@@ -39,18 +33,18 @@ declare global {
     readonly location: Location;
   }
 
-  class Class extends MafiaClass {
-    static get<T = Class>(name: string): T;
-    static get<T = Class>(names: string[]): T[];
-    static all<T = Class>(): T[];
+  class Class {
+    static get(name: string): Class;
+    static get(names: string[]): Class[];
+    static all(): Class[];
     /** Primestat */
     readonly primestat: Stat;
   }
 
-  class Coinmaster extends MafiaClass {
-    static get<T = Coinmaster>(name: string): T;
-    static get<T = Coinmaster>(names: string[]): T[];
-    static all<T = Coinmaster>(): T[];
+  class Coinmaster {
+    static get(name: string): Coinmaster;
+    static get(names: string[]): Coinmaster[];
+    static all(): Coinmaster[];
     /** Token */
     readonly token: string;
     /** Item */
@@ -67,10 +61,10 @@ declare global {
     readonly nickname: string;
   }
 
-  class Effect extends MafiaClass {
-    static get<T = Effect>(name: string): T;
-    static get<T = Effect>(names: string[]): T[];
-    static all<T = Effect>(): T[];
+  class Effect {
+    static get(name: string): Effect;
+    static get(names: string[]): Effect[];
+    static all(): Effect[];
     /** Name */
     readonly name: string;
     /** Default */
@@ -91,18 +85,18 @@ declare global {
     readonly candyTier: number;
   }
 
-  class Element extends MafiaClass {
-    static get<T = Element>(name: string): T;
-    static get<T = Element>(names: string[]): T[];
-    static all<T = Element>(): T[];
+  class Element {
+    static get(name: string): Element;
+    static get(names: string[]): Element[];
+    static all(): Element[];
     /** Image */
     readonly image: string;
   }
 
-  class Familiar extends MafiaClass {
-    static get<T = Familiar>(name: string): T;
-    static get<T = Familiar>(names: string[]): T[];
-    static all<T = Familiar>(): T[];
+  class Familiar {
+    static get(name: string): Familiar;
+    static get(names: string[]): Familiar[];
+    static all(): Familiar[];
     /** Hatchling */
     readonly hatchling: Item;
     /** Image */
@@ -179,10 +173,10 @@ declare global {
     readonly pokeAttribute: string;
   }
 
-  class Item extends MafiaClass {
-    static get<T = Item>(name: string): T;
-    static get<T = Item>(names: string[]): T[];
-    static all<T = Item>(): T[];
+  class Item {
+    static get(name: string): Item;
+    static get(names: string[]): Item[];
+    static all(): Item[];
     /** The name of this Item. */
     readonly name: string;
     /** The name of this Item as it appears in your current Two Crazy Random Summer run. If you are not in a TCRS run, the regular Item name is returned. */
@@ -274,10 +268,10 @@ declare global {
     readonly noobSkill: Skill;
   }
 
-  class Location extends MafiaClass {
-    static get<T = Location>(name: string): T;
-    static get<T = Location>(names: string[]): T[];
-    static all<T = Location>(): T[];
+  class Location {
+    static get(name: string): Location;
+    static get(names: string[]): Location[];
+    static all(): Location[];
     /** Nocombats */
     readonly nocombats: boolean;
     /** Combat percent */
@@ -308,10 +302,10 @@ declare global {
     readonly wanderers: boolean;
   }
 
-  class Monster extends MafiaClass {
-    static get<T = Monster>(name: string): T;
-    static get<T = Monster>(names: string[]): T[];
-    static all<T = Monster>(): T[];
+  class Monster {
+    static get(name: string): Monster;
+    static get(names: string[]): Monster[];
+    static all(): Monster[];
     /** Name */
     readonly name: string;
     /** Id */
@@ -372,18 +366,18 @@ declare global {
     readonly attributes: string;
   }
 
-  class Phylum extends MafiaClass {
-    static get<T = Phylum>(name: string): T;
-    static get<T = Phylum>(names: string[]): T[];
-    static all<T = Phylum>(): T[];
+  class Phylum {
+    static get(name: string): Phylum;
+    static get(names: string[]): Phylum[];
+    static all(): Phylum[];
     /** Image */
     readonly image: string;
   }
 
-  class Servant extends MafiaClass {
-    static get<T = Servant>(name: string): T;
-    static get<T = Servant>(names: string[]): T[];
-    static all<T = Servant>(): T[];
+  class Servant {
+    static get(name: string): Servant;
+    static get(names: string[]): Servant[];
+    static all(): Servant[];
     /** Id */
     readonly id: number;
     /** Name */
@@ -404,10 +398,10 @@ declare global {
     readonly level21Ability: string;
   }
 
-  class Skill extends MafiaClass {
-    static get<T = Skill>(name: string): T;
-    static get<T = Skill>(names: string[]): T[];
-    static all<T = Skill>(): T[];
+  class Skill {
+    static get(name: string): Skill;
+    static get(names: string[]): Skill[];
+    static all(): Skill[];
     /** Name */
     readonly name: string;
     /** Type */
@@ -444,10 +438,10 @@ declare global {
     readonly timescast: number;
   }
 
-  class Thrall extends MafiaClass {
-    static get<T = Thrall>(name: string): T;
-    static get<T = Thrall>(names: string[]): T[];
-    static all<T = Thrall>(): T[];
+  class Thrall {
+    static get(name: string): Thrall;
+    static get(names: string[]): Thrall[];
+    static all(): Thrall[];
     /** Id */
     readonly id: number;
     /** Name */
@@ -464,10 +458,10 @@ declare global {
     readonly currentModifiers: string;
   }
 
-  class Vykea extends MafiaClass {
-    static get<T = Vykea>(name: string): T;
-    static get<T = Vykea>(names: string[]): T[];
-    static all<T = Vykea>(): T[];
+  class Vykea {
+    static get(name: string): Vykea;
+    static get(names: string[]): Vykea[];
+    static all(): Vykea[];
     /** Id */
     readonly id: number;
     /** Name */
@@ -486,15 +480,15 @@ declare global {
     readonly attackElement: Element;
   }
 
-  class Slot extends MafiaClass {
-    static get<T = Slot>(name: string): T;
-    static get<T = Slot>(names: string[]): T[];
-    static all<T = Slot>(): T[];
+  class Slot {
+    static get(name: string): Slot;
+    static get(names: string[]): Slot[];
+    static all(): Slot[];
   }
 
-  class Stat extends MafiaClass {
-    static get<T = Stat>(name: string): T;
-    static get<T = Stat>(names: string[]): T[];
-    static all<T = Stat>(): T[];
+  class Stat {
+    static get(name: string): Stat;
+    static get(names: string[]): Stat[];
+    static all(): Stat[];
   }
 }
