@@ -45,7 +45,7 @@ Webpack:
 module.exports = {
   //...
   externals: {
-    kolmafia: 'kolmafia',
+    kolmafia: 'commonjs kolmafia',
   },
 };
 ```
