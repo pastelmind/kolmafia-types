@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added (partial) type definitions for some popular ASH scripts:
+  - CanAdv r109
+  - EatDrink 3.2
+  - PriceAdvisor 1.62
+  - ZLib r49
+
 ### Changed
 
 - Add TypeScript version requirement (>= 3.0)
