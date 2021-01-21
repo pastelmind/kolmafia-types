@@ -34,6 +34,44 @@ This installs kolmafia-types under the `kolmafia` alias.
 
 ## Usage
 
+### Type definitions for ASH scripts
+
+kolmafia-types provides type definitions for some popular ASH scripts. See the `/contrib` directory for a list of available types.
+
+To use them, add an entry for each ASH script in your `tsconfig.json`:
+
+```jsonc
+{
+  "compilerOptions": {
+    // ...
+    "paths": {
+      // Note: File names are case sensitive!
+      "canadv.ash": ["./node_modules/kolmafia/contrib/canadv.ash"],
+      "zlib.ash": ["./node_modules/kolmafia/contrib/zlib.ash"]
+    }
+  }
+}
+```
+
+This allows TypeScript to type check functions imported from these ASH scripts:
+
+```ts
+// JavaScript
+const {canAdv} = require('canadv.ash');
+const {getvar, setvar} = require('zlib.ash');
+// TypeScript, Babel, or other transpilers/bundlers
+import {canAdv} from 'canadv.ash';
+import {getvar, setvar} from 'zlib.ash';
+
+setvar('my_var_1', 'some_value');
+const value = getvar('my_var_2');
+if (canAdv(Location.get('The Haunted Bedroom'), false)) {
+  // ...
+}
+```
+
+If you use a bundler, you may also need to add the ASH scripts as external modules. (See [Using a bundler](#using-a-bundler))
+
 ### Using a bundler
 
 Bundlers such as [Webpack](https://webpack.js.org/) and [Rollup](https://rollupjs.org/) can bundle all dependencies into a single file. However, `kolmafia` is a library that exists only inside KoLmafia's execution environment. Thus, you need to configure your bundler to ignore `kolmafia`.
@@ -46,6 +84,9 @@ module.exports = {
   //...
   externals: {
     kolmafia: 'commonjs kolmafia',
+    // Additional ASH scripts used in your code
+    'canadv.ash': 'commonjs canadv.ash',
+    'zlib.ash': 'commonjs zlib.ash',
   },
 };
 ```
@@ -56,6 +97,11 @@ Rollup:
 // rollup.config.js
 export default {
   // ...
-  external: ['kolmafia'],
+  external: [
+    'kolmafia',
+    // Additional ASH scripts used in your code
+    'canadv.ash',
+    'zlib.ash',
+  ],
 };
 ```
