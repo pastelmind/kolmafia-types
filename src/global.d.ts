@@ -438,6 +438,18 @@ declare global {
     readonly timescast: number;
   }
 
+  class Slot {
+    static get(name: string): Slot;
+    static get(names: string[]): Slot[];
+    static all(): Slot[];
+  }
+
+  class Stat {
+    static get(name: string): Stat;
+    static get(names: string[]): Stat[];
+    static all(): Stat[];
+  }
+
   class Thrall {
     static get(nameOrId: number | string): Thrall;
     static get(namesAndIds: (number | string)[]): Thrall[];
@@ -478,17 +490,5 @@ declare global {
     readonly modifiers: string;
     /** Attack element */
     readonly attackElement: Element;
-  }
-
-  class Slot {
-    static get(name: string): Slot;
-    static get(names: string[]): Slot[];
-    static all(): Slot[];
-  }
-
-  class Stat {
-    static get(name: string): Stat;
-    static get(names: string[]): Stat[];
-    static all(): Stat[];
   }
 }
