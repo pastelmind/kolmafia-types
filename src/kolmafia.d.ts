@@ -313,6 +313,14 @@ export function insert(buffer: string, index: number, s: string): string;
 export function isAccessible(master: Coinmaster): boolean;
 export function isBanished(arg: Monster): boolean;
 export function isCoinmasterItem(item: Item): boolean;
+
+/**
+ * Checks if KoLmafia is using a Dark Mode theme.
+ * @version r20566
+ * @return Whether KoLmafia is currently using a Dark Mode theme
+ */
+export function isDarkMode(): boolean;
+
 export function isDiscardable(item: Item): boolean;
 export function isDisplayable(item: Item): boolean;
 export function isFamiliarEquipmentLocked(): boolean;
