@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Add `valueOf()` on enumerated classes. (#10)
+  - The following classes return integer IDs:
+    Class, Effect, Familiar, Item, Monster, Servant, Skill, Slot, Thrall, Vykea
+  - All other classes return 0, and `valueOf()` is marked as @deprecated
+    (Bounty, Coinmaster, Element, Location, Phylum, Stat)
+
 ## [0.0.3] - 2020-01-21
 
 ### Added

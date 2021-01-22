@@ -17,6 +17,13 @@ declare global {
     static get(name: string): Bounty;
     static get(names: string[]): Bounty[];
     static all(): Bounty[];
+
+    /**
+     * Always returns 0, since Bounty does not have an integer ID.
+     * @deprecated
+     */
+    valueOf(): 0;
+
     /** Plural */
     readonly plural: string;
     /** Type */
@@ -37,6 +44,12 @@ declare global {
     static get(name: string): Class;
     static get(names: string[]): Class[];
     static all(): Class[];
+
+    /**
+     * Returns the integer ID of the Class.
+     */
+    valueOf(): number;
+
     /** Primestat */
     readonly primestat: Stat;
   }
@@ -45,6 +58,13 @@ declare global {
     static get(name: string): Coinmaster;
     static get(names: string[]): Coinmaster[];
     static all(): Coinmaster[];
+
+    /**
+     * Always returns 0, since Coinmaster does not have an integer ID.
+     * @deprecated
+     */
+    valueOf(): 0;
+
     /** Token */
     readonly token: string;
     /** Item */
@@ -65,6 +85,12 @@ declare global {
     static get(nameOrId: number | string): Effect;
     static get(namesAndIds: (number | string)[]): Effect[];
     static all(): Effect[];
+
+    /**
+     * Returns the integer ID of the Effect.
+     */
+    valueOf(): number;
+
     /** Name */
     readonly name: string;
     /** Default */
@@ -89,6 +115,13 @@ declare global {
     static get(name: string): Element;
     static get(names: string[]): Element[];
     static all(): Element[];
+
+    /**
+     * Always returns 0, since Element does not have an integer ID.
+     * @deprecated
+     */
+    valueOf(): 0;
+
     /** Image */
     readonly image: string;
   }
@@ -97,6 +130,12 @@ declare global {
     static get(nameOrId: number | string): Familiar;
     static get(namesAndIds: (number | string)[]): Familiar[];
     static all(): Familiar[];
+
+    /**
+     * Returns the integer ID of the Familiar.
+     */
+    valueOf(): number;
+
     /** Hatchling */
     readonly hatchling: Item;
     /** Image */
@@ -177,6 +216,12 @@ declare global {
     static get(nameOrId: number | string): Item;
     static get(namesAndIds: (number | string)[]): Item[];
     static all(): Item[];
+
+    /**
+     * Returns the integer ID of the Item.
+     */
+    valueOf(): number;
+
     /** The name of this Item. */
     readonly name: string;
     /** The name of this Item as it appears in your current Two Crazy Random Summer run. If you are not in a TCRS run, the regular Item name is returned. */
@@ -272,6 +317,13 @@ declare global {
     static get(name: string): Location;
     static get(names: string[]): Location[];
     static all(): Location[];
+
+    /**
+     * Always returns 0, since Location does not have an integer ID.
+     * @deprecated
+     */
+    valueOf(): 0;
+
     /** Nocombats */
     readonly nocombats: boolean;
     /** Combat percent */
@@ -306,6 +358,12 @@ declare global {
     static get(nameOrId: number | string): Monster;
     static get(namesAndIds: (number | string)[]): Monster[];
     static all(): Monster[];
+
+    /**
+     * Returns the integer ID of the Monster.
+     */
+    valueOf(): number;
+
     /** Name */
     readonly name: string;
     /** Id */
@@ -370,6 +428,13 @@ declare global {
     static get(name: string): Phylum;
     static get(names: string[]): Phylum[];
     static all(): Phylum[];
+
+    /**
+     * Always returns 0, since Phylum does not have an integer ID.
+     * @deprecated
+     */
+    valueOf(): 0;
+
     /** Image */
     readonly image: string;
   }
@@ -378,6 +443,12 @@ declare global {
     static get(nameOrId: number | string): Servant;
     static get(namesAndIds: (number | string)[]): Servant[];
     static all(): Servant[];
+
+    /**
+     * Returns the integer ID of the Servant.
+     */
+    valueOf(): number;
+
     /** Id */
     readonly id: number;
     /** Name */
@@ -402,6 +473,12 @@ declare global {
     static get(nameOrId: number | string): Skill;
     static get(namesAndIds: (number | string)[]): Skill[];
     static all(): Skill[];
+
+    /**
+     * Returns the integer ID of the Skill.
+     */
+    valueOf(): number;
+
     /** Name */
     readonly name: string;
     /** Type */
@@ -442,18 +519,35 @@ declare global {
     static get(name: string): Slot;
     static get(names: string[]): Slot[];
     static all(): Slot[];
+
+    /**
+     * Returns the integer ID of the Slot.
+     */
+    valueOf(): number;
   }
 
   class Stat {
     static get(name: string): Stat;
     static get(names: string[]): Stat[];
     static all(): Stat[];
+
+    /**
+     * Always returns 0, since Stat does not have an integer ID.
+     * @deprecated
+     */
+    valueOf(): 0;
   }
 
   class Thrall {
     static get(nameOrId: number | string): Thrall;
     static get(namesAndIds: (number | string)[]): Thrall[];
     static all(): Thrall[];
+
+    /**
+     * Returns the integer ID of the Thrall.
+     */
+    valueOf(): number;
+
     /** Id */
     readonly id: number;
     /** Name */
@@ -474,6 +568,14 @@ declare global {
     static get(name: string): Vykea;
     static get(names: string[]): Vykea[];
     static all(): Vykea[];
+
+    /**
+     * Returns the integer ID of the Vykea.
+     * Note that VYKEA Companions of the same type (e.g. Bookshelf) have the
+     * same ID.
+     */
+    valueOf(): number;
+
     /** Id */
     readonly id: number;
     /** Name */
