@@ -61,3 +61,49 @@ export function setvar(
 ): void;
 
 export function getvar(varname: string): string;
+
+/**
+ * Converts a number to a human-readable string, based on the user's locale.
+ * This adds grouping separators (,). If `value` is a floating-point number,
+ * also rounds to 2 digits after the decimal.
+ * @param value Integer or floating-point number
+ */
+export function rnum(value: number): string;
+
+/**
+ * Converts a number to a human-readable string, based on the user's locale.
+ * This adds grouping separators (,). If `value` is a floating-point number,
+ * also rounds to the nearest `place` digits after the decimal.
+ * @param value Integer or floating-point number
+ * @param place Must be integer
+ */
+export function rnum(value: number, place: number): string;
+
+/**
+ * Prints a message to the gCLI, obeying the user's current verbosity settings.
+ * Prints red text if `level` < 0, and black text if `level` > 0.
+ *
+ * If `level` is 0, aborts the script.
+ * @param message
+ * @param level Verbosity level (integer between -10 and 10)
+ * @return `true` if `level` > 0, `false` if `level` < 0
+ */
+export function vprint<VerbosityT extends number>(
+  message: string,
+  level: VerbosityT
+): VerbosityT extends 0 ? never : boolean;
+
+/**
+ * Prints a message to the gCLI, obeying the user's current verbosity settings.
+ *
+ * If `level` is 0, aborts the script.
+ * @param message
+ * @param color Text color (hex code or CSS color name)
+ * @param level Verbosity level (integer between -10 and 10)
+ * @return `true` if `level` > 0, `false` if `level` < 0
+ */
+export function vprint<VerbosityT extends number>(
+  message: string,
+  color: string,
+  level: VerbosityT
+): VerbosityT extends 0 ? never : boolean;
