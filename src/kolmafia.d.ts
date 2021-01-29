@@ -389,8 +389,7 @@ export function mallPrices(category: string, tiers: string): number;
 export function manaCostModifier(): number;
 export function mapToFile(var1: unknown, var2: string): boolean;
 export function mapToFile(var1: unknown, var2: string, var3: boolean): boolean;
-export function max(arg1: number, arg2: number[]): number;
-export function max(arg1: number, arg2: number[]): number;
+export function max(arg1: number, ...args: number[]): number;
 export function maximize(
   maximizerStringValue: string,
   isSpeculateOnlyValue: boolean
@@ -419,8 +418,7 @@ export function meatDrop(): number;
 export function meatDrop(arg: Monster): number;
 export function meatDropModifier(): number;
 export function meatPockets(): {[key: number]: number};
-export function min(arg1: number, arg2: number[]): number;
-export function min(arg1: number, arg2: number[]): number;
+export function min(arg1: number, ...args: number[]): number;
 export function minstrelInstrument(): Item;
 export function minstrelLevel(): number;
 export function minstrelQuest(): boolean;
