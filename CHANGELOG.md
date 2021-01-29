@@ -7,13 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4] - 2020-01-29
+
 ### Added
 
 - Add `valueOf()` on enumerated classes. (#10)
+
   - The following classes return integer IDs:
     Class, Effect, Familiar, Item, Monster, Servant, Skill, Slot, Thrall, Vykea
   - All other classes return 0, and `valueOf()` is marked as @deprecated
     (Bounty, Coinmaster, Element, Location, Phylum, Stat)
+
+- ZLib: Add `rnum()`, `vprint()` (#12)
+
+### Fixed
+
+- Fix arguments of `min()` and `max()`. They are now properly variadic. (#11)
 
 ## [0.0.3] - 2020-01-21
 
@@ -48,7 +57,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[unreleased]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.3...HEAD
+[unreleased]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.4...HEAD
+[0.0.4]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/pastelmind/kolmafia-types/releases/tag/v0.0.1
