@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.0.4] - 2020-01-29
+## [0.0.4] - 2021-01-29
 
 ### Added
 
@@ -24,13 +24,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Fix arguments of `min()` and `max()`. They are now properly variadic. (#11)
 
-## [0.0.3] - 2020-01-21
+## [0.0.3] - 2021-01-21
 
 ### Added
 
 - Support `isDarkMode()` (KoLmafia r20566) (#9)
 
-## [0.0.2] - 2020-01-21
+## [0.0.2] - 2021-01-21
 
 ### Added
 
@@ -51,7 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `Servant`, `Skill`, and `Thrall` now accept numbers (integer IDs) in addition
   to strings (names). (#4)
 
-## [0.0.1] - 2020-01-20
+## [0.0.1] - 2021-01-20
 
 ### Added
 
