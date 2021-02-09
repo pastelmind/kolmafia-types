@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5] - 2021-02-09
+
 ### Added
 
 - Detailed comments for library functions that start with A up to C.
@@ -70,7 +72,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial release
 
-[unreleased]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.4...HEAD
+[unreleased]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.5...HEAD
+[0.0.5]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.1...v0.0.2
