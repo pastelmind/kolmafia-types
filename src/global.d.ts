@@ -258,9 +258,19 @@ declare global {
     readonly candyType: string;
     /** `true` if this Item is a chocolate, else `false`. */
     readonly chocolate: boolean;
-    /** Which Coinmaster sells this Item, if any. */
+    /**
+     * Which Coinmaster sells this Item, if any.
+     *
+     * @version r20627 Prior to this version, attempting to access this field
+     *    caused the JavaScript runtime to abort with an error.
+     */
     readonly seller: Coinmaster;
-    /** Which Coinmaster buys this Item, if any. */
+    /**
+     * Which Coinmaster buys this Item, if any.
+     *
+     * @version r20627 Prior to this version, attempting to access this field
+     *    caused the JavaScript runtime to abort with an error.
+     */
     readonly buyer: Coinmaster;
     /** The length of this Item's display name. */
     readonly nameLength: number;
