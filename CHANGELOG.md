@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Detailed comments for library functions that start with A up to C.
+
+### Changed
+
+- `Item.buyer` and `Item.seller` now have `@version` comments describing the
+  KoLmafia version where they no longer cause crashes.
+
 ### Removed
 
 - Custom `valueOf()` methods are no longer available on enumerated types. (#13)
