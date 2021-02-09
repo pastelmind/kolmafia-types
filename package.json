@@ -1,6 +1,6 @@
 {
   "name": "kolmafia-types",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "TypeScript type declarations for KoLmafia. Alternative to kolmafia-js.",
   "types": "src/index.d.ts",
   "files": [
