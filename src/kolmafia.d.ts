@@ -4,7 +4,7 @@
 
 import './global';
 
-// These type definitions are derived from kolmafia-js v0.0.3, written by Samuel
+// These type definitions are derived from kolmafia-js v1.0.4, written by Samuel
 // Gaus (@gausie). kolmafia-js provides type definitions generated from
 // KoLmafia's source code. Because kolmafia-js does not come with a license as
 // of writing, I post none here.
@@ -1111,8 +1111,8 @@ export function drink(arg1: number, arg2: Item): boolean;
 export function drinksilent(item: Item): boolean;
 export function drinksilent(arg1: Item, arg2: number): boolean;
 export function drinksilent(arg1: number, arg2: Item): boolean;
-export function dump(arg: null): void;
-export function dump(arg: null, color: string): void;
+export function dump(arg: unknown): void;
+export function dump(arg: unknown, color: string): void;
 export function eat(item: Item): boolean;
 export function eat(arg1: Item, arg2: number): boolean;
 export function eat(arg1: number, arg2: Item): boolean;
@@ -1739,7 +1739,7 @@ export function toInt(value: Vykea): number;
 export function toItem(value: string): Item;
 export function toItem(value: number): Item;
 export function toItem(name: string, count: number): Item;
-export function toJson(val: null): string;
+export function toJson(val: unknown): string;
 export function toLocation(value: string): Location;
 export function toLocation(value: number): Location;
 export function toLowerCase(string: string): string;
