@@ -34,7 +34,7 @@ expectType<number>(availablePocket(Effect.get('foo')));
 expectType<number>(availablePocket(Item.get('foo')));
 expectType<number>(availablePocket(Stat.get('foo')));
 
-expectType<Record<number, boolean>>(effectPockets());
+expectType<Record<number, true>>(effectPockets());
 expectType<Record<number, boolean>>(itemPockets());
 expectType<Record<number, boolean>>(jokePockets());
 expectType<Record<number, number>>(meatPockets());

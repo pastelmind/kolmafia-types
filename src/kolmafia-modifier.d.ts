@@ -71,8 +71,34 @@ export function classModifier(source: string, modifier: string): Class;
  */
 export function classModifier(item: Item, modifier: string): Class;
 
-export function effectModifier(arg: string, modifier: string): Effect;
-export function effectModifier(arg: Item, modifier: string): Effect;
+/**
+ * Extracts a modifier from `source` and parses it as an `Effect` object.
+ *
+ * The modifier string can be any of the following:
+ *
+ * - Item name, e.g. `"pail"`
+ * - Item ID (integer) surrounded by brackets, e.g. `"[123]"`
+ * - String of the form `<type>:<name>`, where...
+ *   - `<type>` is a modifier source type, e.g. `Item`, `Effect`, `Skill`
+ *   - `<name>` is the name of the item/effect/skill/etc.
+ * @param source Modifier source string
+ * @param modifier Modifier name to parse
+ * @return Modifier value parsed as an `Effect`.
+ *    If the value is not a valid Effect, returns the `none` Effect.
+ */
+export function effectModifier(source: string, modifier: string): Effect;
+
+/**
+ * Extracts a modifier on an `item` and parses it as an `Effect` object.
+ * By passing `"Intrinsic Effect"` as the modifier name, this function can be
+ * used to retrieve the intrinsic effect provided by an item. Note, however,
+ * that all intrinsic effects on items have been removed as of March 1st, 2012.
+ * @param item Item to check
+ * @param modifier Modifier name to parse, typically `"Intrinsic Effect"`
+ * @return Modifier value parsed as an `Effect`.
+ *    If the value is not a valid Effect, returns the `none` Effect.
+ */
+export function effectModifier(item: Item, modifier: string): Effect;
 
 export function numericModifier(modifier: string): number;
 export function numericModifier(arg: string, modifier: string): number;
