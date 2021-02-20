@@ -1447,6 +1447,19 @@ export function myPokeFam(arg: number): Familiar;
 export function myPp(): number;
 export function myPrimestat(): Stat;
 export function myRain(): number;
+
+/**
+ * Returns your current Energy amount in a You, Robot challenge path.
+ * @version r20643
+ */
+export function myRobotEnergy(): number;
+
+/**
+ * Returns your current Scrap amount in a You, Robot challenge path.
+ * @version r20643
+ */
+export function myRobotScraps(): number;
+
 export function myServant(): Servant;
 export function mySessionAdv(): number;
 export function mySessionItems(): {[item: string]: number};
