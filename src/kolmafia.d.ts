@@ -616,6 +616,15 @@ export function canEat(): boolean;
 export function canEquip(item: Item): boolean;
 
 /**
+ * Checks if the player can equip the familiar, based on current (path)
+ * restrictions.
+ * This does not check if the player actually has the familiar.
+ * @version r20652
+ * @param familiar Familiar to check
+ */
+export function canEquip(familiar: Familiar): boolean;
+
+/**
  * Checks if a familiar can equip the item.
  * This does not check if the player actually has the item in inventory.
  *
