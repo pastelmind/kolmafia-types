@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added `canEquip(fam: Familiar)` form (#15)
 
+### Fixed
+
+- Properly specify the license of [kolmafia-js], which this project derives
+  from.(#16)
+
 ## [0.0.6] - 2021-02-20
 
 ### Added
