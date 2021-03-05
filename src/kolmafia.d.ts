@@ -1,5 +1,8 @@
 /**
  * @file Type definitions for KoLmafia's standard (runtime) library.
+ *
+ * Note: This module contains uncategorized library functions.
+ * See modules named `kolmafia-*.d.ts` for categorized functions.
  */
 
 import './global';
@@ -432,47 +435,6 @@ export function bjornifyFamiliar(familiar: Familiar): boolean;
 export function blackMarketAvailable(): boolean;
 
 /**
- * Accesses fields of your current modifiers for all of your current equipment
- * and effects. This uses the same mechanism that lets KoLmafia decide whether
- * you can adventure underwater, or how many songs you can keep in your head.
- * @param modifier Modifier name
- * @return Modifier value
- */
-export function booleanModifier(modifier: string): boolean;
-
-/**
- * Extracts a modifier from `source` and parses it as a boolean value.
- *
- * The modifier string can be any of the following:
- *
- * - Item name, e.g. `"pail"`
- * - Item ID (integer) surrounded by brackets, e.g. `"[123]"`
- * - String of the form `<type>:<name>`, where...
- *   - `<type>` is a modifier source type, e.g. `Item`, `Effect`, `Skill`
- *   - `<name>` is the name of the item/effect/skill/etc.
- * @param source Modifier source string
- * @param modifier Modifier name
- * @return Modifier value
- */
-export function booleanModifier(source: string, modifier: string): boolean;
-
-/**
- * Accesses a boolean modifier provided by the `item`.
- * @param item Item to check
- * @param modifier Modifier name
- * @return Modifier value
- */
-export function booleanModifier(item: Item, modifier: string): boolean;
-
-/**
- * Accesses a boolean modifier provided by the `effect`.
- * @param effect Effect to check
- * @param modifier Modifier name
- * @return Modifier value
- */
-export function booleanModifier(effect: Effect, modifier: string): boolean;
-
-/**
  * Returns the buffed value of the stat used to calculate your hit chance.
  *
  * Note: Melee weapons use muscle to calculate hit change, and ranged weapons
@@ -820,32 +782,6 @@ export function chew(qty: number, item: Item): boolean;
 export function choiceFollowsFight(): boolean;
 
 /**
- * Extracts a modifier from `source` and parses it as a `Class` object.
- *
- * The modifier string can be any of the following:
- *
- * - Item name, e.g. `"pail"`
- * - Item ID (integer) surrounded by brackets, e.g. `"[123]"`
- * - String of the form `<type>:<name>`, where...
- *   - `<type>` is a modifier source type, e.g. `Item`, `Effect`, `Skill`
- *   - `<name>` is the name of the item/effect/skill/etc.
- * @param source Modifier source string
- * @param modifier Modifier name to parse, typically `"Class"`
- * @return Value of the modifier, parsed as a `Class`
- */
-export function classModifier(source: string, modifier: string): Class;
-
-/**
- * Extracts a modifier on an `item` and parses it as a `Class` object.
- * By passing `"Class"` as the modifier name, this function can be used to
- * retrieve the character class of a class-specific item.
- * @param item Item to check
- * @param modifier Modifier name to parse, typically `"Class"`
- * @return Value of the modifier, parsed as a `Class`
- */
-export function classModifier(item: Item, modifier: string): Class;
-
-/**
  * Empties the given aggregate (map).
  *
  * **NOTE: Because the internal library function actually "clears" a copy of the
@@ -1149,8 +1085,6 @@ export function eat(arg1: number, arg2: Item): boolean;
 export function eatsilent(item: Item): boolean;
 export function eatsilent(arg1: Item, arg2: number): boolean;
 export function eatsilent(arg1: number, arg2: Item): boolean;
-export function effectModifier(arg: string, modifier: string): Effect;
-export function effectModifier(arg: Item, modifier: string): Effect;
 export function effectPockets(): {[key: number]: boolean};
 export function elementalResistance(arg: Element): number;
 export function elementalResistance(): number;
@@ -1507,17 +1441,6 @@ export function nowToInt(): number;
 export function nowToString(dateFormatValue: string): string;
 export function npcPrice(item: Item): number;
 export function numberologyPrize(num: number): string;
-export function numericModifier(modifier: string): number;
-export function numericModifier(arg: string, modifier: string): number;
-export function numericModifier(arg: Item, modifier: string): number;
-export function numericModifier(arg: Effect, modifier: string): number;
-export function numericModifier(arg: Skill, modifier: string): number;
-export function numericModifier(
-  familiar: Familiar,
-  modifier: string,
-  weight: number,
-  item: Item
-): number;
 export function outfit(outfit: string): boolean;
 export function outfitPieces(outfit: string): Item[];
 export function outfitTattoo(outfit: string): string;
@@ -1673,8 +1596,6 @@ export function setProperty(nameValue: string, value: string): void;
 export function shopAmount(arg: Item): number;
 export function shopLimit(arg: Item): number;
 export function shopPrice(item: Item): number;
-export function skillModifier(arg: string, modifier: string): Skill;
-export function skillModifier(arg: Item, modifier: string): Skill;
 export function slashCount(arg: Item): number;
 export function soulsauceCost(skill: Skill): number;
 export function spleenLimit(): number;
@@ -1685,14 +1606,11 @@ export function startsWith(source: string, prefix: string): boolean;
 export function stashAmount(arg: Item): number;
 export function statBonusToday(): Stat;
 export function statBonusTomorrow(): Stat;
-export function statModifier(arg: Effect, modifier: string): Stat;
 export function statsPockets(): {[key: number]: boolean};
 export function steal(): string;
 export function stillsAvailable(): number;
 export function stopCounter(label: string): void;
 export function storageAmount(arg: Item): number;
-export function stringModifier(modifier: string): string;
-export function stringModifier(arg: string, modifier: string): string;
 export function stunSkill(): Skill;
 export function substring(source: string, start: number): string;
 export function substring(
