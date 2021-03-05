@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Properly specify the license of [kolmafia-js], which this project derives
   from.(#16)
+- Fixed a bug that caused TypeScript to select the wrong overloaded form of
+  `pickPocket()` when a number is passed as the argument. (#17)
 
 ## [0.0.6] - 2021-02-20
 
