@@ -359,42 +359,6 @@ export function availableChoiceTextInputs(
 ): {[inputName: string]: ''};
 
 /**
- * Returns an unopened pocket number in your Cargo Cultist Shorts that will
- * result in a fight with the `monster`.
- * @param monster Monster to search for
- * @return Pocket number (integer between 1 and 666, inclusive), or 0 if no
- *    available pockets contain the `monster`
- */
-export function availablePocket(monster: Monster): number;
-
-/**
- * Returns an unopened pocket number in your Cargo Cultist Shorts that will give
- * the most turns of `effect`.
- * @param effect Effect to search for
- * @return Pocket number (integer between 1 and 666, inclusive), or 0 if no
- *    available pockets contain the `effect`
- */
-export function availablePocket(effect: Effect): number;
-
-/**
- * Returns an unopened pocket number in your Cargo Cultist Shorts that will give
- * the largest number of `item`.
- * @param item Item to look for
- * @return Pocket number (integer between 1 and 666, inclusive), or 0 if no
- *    available pockets contain the `item`
- */
-export function availablePocket(item: Item): number;
-
-/**
- * Returns an unopened pocket number in your Cargo Cultist Shorts that will give
- * the most substats for the `stat`.
- * @param stat Stat to look for
- * @return Pocket number (integer between 1 and 666, inclusive), or 0 if no
- *    available pockets give the `stat`
- */
-export function availablePocket(stat: Stat): number;
-
-/**
  * Exits batch mode, executes all batch-aware operations that were called after
  * the last `batchOpen()`. This reduces the number of server hits.
  *
@@ -1085,7 +1049,6 @@ export function eat(arg1: number, arg2: Item): boolean;
 export function eatsilent(item: Item): boolean;
 export function eatsilent(arg1: Item, arg2: number): boolean;
 export function eatsilent(arg1: number, arg2: Item): boolean;
-export function effectPockets(): {[key: number]: boolean};
 export function elementalResistance(arg: Element): number;
 export function elementalResistance(): number;
 export function elementalResistance(arg: Monster): number;
@@ -1266,9 +1229,7 @@ export function itemDropsArray(
 export function itemDropsArray(
   arg: Monster
 ): {drop: Item; rate: number; type: string}[];
-export function itemPockets(): {[key: number]: boolean};
 export function itemType(item: Item): string;
-export function jokePockets(): {[key: number]: boolean};
 export function jumpChance(): number;
 export function jumpChance(arg: Monster): number;
 export function jumpChance(arg: Monster, init: number): number;
@@ -1338,7 +1299,6 @@ export function maximize(
 export function meatDrop(): number;
 export function meatDrop(arg: Monster): number;
 export function meatDropModifier(): number;
-export function meatPockets(): {[key: number]: number};
 
 /**
  * Returns the smallest number among the given arguments.
@@ -1365,7 +1325,6 @@ export function monsterLevelAdjustment(): number;
 export function monsterManuelText(arg: Monster): string;
 export function monsterPhylum(): Phylum;
 export function monsterPhylum(arg: Monster): Phylum;
-export function monsterPockets(): {[key: number]: boolean};
 export function moodExecute(multiplicity: number): void;
 export function moodList(): string[];
 export function moonLight(): number;
@@ -1449,26 +1408,6 @@ export function overdrink(arg1: Item, arg2: number): boolean;
 export function overdrink(arg1: number, arg2: Item): boolean;
 export function pathIdToName(value: number): string;
 export function pathNameToId(value: string): number;
-export function pickPocket(arg: number): boolean;
-export function pickPocket(arg: Monster): boolean;
-export function pickPocket(arg: Effect): {[effect: string]: number};
-export function pickPocket(arg: Item): {[item: string]: number};
-export function pickPocket(arg: Stat): {[stat: string]: number};
-export function pickedPockets(): {[key: number]: boolean};
-export function pickedScraps(): {[key: number]: boolean};
-export function pocketEffects(pocket: number): {[effect: string]: number};
-export function pocketItems(pocket: number): {[item: string]: number};
-export function pocketJoke(pocket: number): string;
-export function pocketMeat(pocket: number): {[key: number]: string};
-export function pocketMonster(pocket: number): Monster;
-export function pocketPoem(pocket: number): {[key: number]: string};
-export function pocketScrap(pocket: number): {[key: number]: string};
-export function pocketStats(pocket: number): {[stat: string]: number};
-export function poemPockets(): {[key: number]: number};
-export function potentialPockets(arg: Monster): {[key: number]: number};
-export function potentialPockets(arg: Effect): {[key: number]: number};
-export function potentialPockets(arg: Item): {[key: number]: number};
-export function potentialPockets(arg: Stat): {[key: number]: number};
 export function print(): void;
 export function print(string: string): void;
 export function print(string: string, color: string): void;
@@ -1548,7 +1487,6 @@ export function repriceShop(
   limitValue: number,
   itemValue: Item
 ): boolean;
-export function restorationPockets(): {[key: number]: boolean};
 export function restoreHp(amount: number): boolean;
 export function restoreMp(amount: number): boolean;
 export function retrieveItem(item: Item): boolean;
@@ -1573,7 +1511,6 @@ export function runCombat(): string;
 export function runCombat(filterFunction: string): string;
 export function runTurn(): string;
 export function runaway(): string;
-export function scrapPockets(): {[key: number]: number};
 export function sell(
   master: Coinmaster,
   countValue: number,
@@ -1606,7 +1543,6 @@ export function startsWith(source: string, prefix: string): boolean;
 export function stashAmount(arg: Item): number;
 export function statBonusToday(): Stat;
 export function statBonusTomorrow(): Stat;
-export function statsPockets(): {[key: number]: boolean};
 export function steal(): string;
 export function stillsAvailable(): number;
 export function stopCounter(label: string): void;
