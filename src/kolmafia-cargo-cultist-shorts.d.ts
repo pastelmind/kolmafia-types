@@ -40,7 +40,13 @@ export function availablePocket(item: Item): number;
  */
 export function availablePocket(stat: Stat): number;
 
-export function effectPockets(): {[key: number]: boolean};
+/**
+ * Returns an object whose keys are pocket numbers (converted to strings) of all
+ * pockets in the {@link https://kol.coldfront.net/thekolwiki/index.php/Cargo_Cultist_Shorts Cargo Cultist Shorts}
+ * that give effects. This includes both used and unused pockets.
+ */
+export function effectPockets(): {[key: number]: true};
+
 export function itemPockets(): {[key: number]: boolean};
 export function jokePockets(): {[key: number]: boolean};
 export function meatPockets(): {[key: number]: number};

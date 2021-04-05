@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added `canEquip(fam: Familiar)` form (#15)
+- Detailed comments for library functions that start with D up to E. (#19)
 
 ### Fixed
 

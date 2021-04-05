@@ -410,8 +410,8 @@ export function buffedHitStat(): number;
 /**
  * Saves a string to a text file.
  * @version r20629
- * @param data Contents of the file
- * @param filepath Path to the text file to save
+ * @param data String to save
+ * @param filepath Path to the text file
  * @return `true` on success, `false` on failure
  */
 export function bufferToFile(data: string, filepath: string): boolean;
@@ -1021,58 +1021,600 @@ export function currentRadSickness(): number;
  * Returns the current combat round number.
  */
 export function currentRound(): number;
-export function dadSeaMonkeeWeakness(arg: number): Element;
+
+/**
+ * Returns the elemental weakness of {@link https://kol.coldfront.net/thekolwiki/index.php/Dad_Sea_Monkee Dad Sea Monkee}
+ * for a given combat round.
+ * This works only for rounds 1 to 10.
+ * @param round Round number
+ * @return Element that Dad is weak to for the round
+ */
+export function dadSeaMonkeeWeakness(round: number): Element;
+
+/**
+ * Returns the item offered as a daily special at either {@link https://kol.coldfront.net/thekolwiki/index.php/Chez_Snoot%C3%A9e Chez Snootée}
+ * or {@link https://kol.coldfront.net/thekolwiki/index.php/The_Gnomish_Micromicrobrewery The Gnomish Micromicrobrewery},
+ * depending on your current moon sign.
+ */
 export function dailySpecial(): Item;
+
+/**
+ * Returns the percentage of damage absorbed by your current {@link https://kol.coldfront.net/thekolwiki/index.php/Damage_Absorption Damage Absoption}
+ * amount.
+ *
+ * For example, if your total DA is 510, this function returns `61.414283752441406`.
+ */
 export function damageAbsorptionPercent(): number;
+
+/**
+ * Returns your current {@link https://kol.coldfront.net/thekolwiki/index.php/Damage_Reduction Damage Reduction}
+ * amount.
+ */
 export function damageReduction(): number;
-export function dateToTimestamp(
-  inFormat: string,
-  dateTimeString: string
-): number;
-export function debugprint(string: string): void;
-export function descToEffect(value: string): Effect;
+
+/**
+ * Parses a time string and converts it to a Unix timestamp, using
+ * {@link https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html#parse-java.lang.String-java.text.ParsePosition- `java.text.SimpleDateFormat.parse()`}.
+ * @param pattern Date and time pattern string to use for parsing the text
+ * @param text Text to parse
+ * @return Unix timestamp in milliseconds
+ */
+export function dateToTimestamp(pattern: string, text: string): number;
+
+/**
+ * If debugging has been turned on (gCLI `debug on` command), prints the string
+ * to the debug log _only_. Otherwise, does nothing.
+ * @param text Message to print to debug log
+ */
+export function debugprint(text: string): void;
+
+/**
+ * Returns an Effect whose `descid` exactly matches the given string.
+ * @param descid Descid of the effect
+ * @return Effect whose `descid` matches the given string, or the `none` effect
+ *    if no match is found
+ */
+export function descToEffect(descid: string): Effect;
+
+/**
+ * Returns an Item whose `descid` exactly matches the given string.
+ * @param descid Descid of the item
+ * @return Item whose `descid` matches the given string, or the `none` item if
+ *    no match is found
+ */
 export function descToItem(value: string): Item;
-export function disable(name: string): void;
+
+/**
+ * Disables gCLI commands and ASH functions. This can disable built-in library
+ * functions as well as custom ASH functions, but not custom JavaScript
+ * functions.
+ *
+ * Disabled functions will usually do nothing and return the "zero" value for
+ * its return type (e.g. `false` for `boolean`, `0` for `int`).
+ *
+ * Note: To disable a built-in library function, you must use the ASH function's
+ * name.
+ *
+ * @example
+ * ```js
+ *    disable("buffer_to_file"); // Disables the bufferToFile() function
+ * ```
+ * @param functionNames Names of gCLI commands and ASH functions (case
+ *    insensitive), separated by spaces (` `) and/or commas (`,`).
+ *    The special keyword `"all"` disables _all_ ASH functions except
+ *    `disable()` and `enable()`.
+ */
+export function disable(functionNames: string): void;
+
+/**
+ * Checks if the current player can access the {@link https://kol.coldfront.net/thekolwiki/index.php/Dispensary Cobb's Knob Dispensary}.
+ */
 export function dispensaryAvailable(): boolean;
-export function displayAmount(arg: Item): number;
+
+/**
+ * * Returns the amount of `item` in your Display Case.
+ */
+export function displayAmount(item: Item): number;
+
+/**
+ * Attempts to drink a booze item.
+ *
+ * If drinking the item would result in overdrinking, KoLmafia will warn the
+ * user and ask for confirmation. KoLmafia will also warn about missing effects
+ * and items that affect drinking (e.g. Ode to Booze, tuxedo shirt). If the user
+ * confirms a warning, KoLmafia will not warn the user again during the current
+ * session.
+ * @param item Item to drink
+ * @return `true` if `item` is a drinkable item, `false` otherwise.
+ *    This returns `true` even if the player failed to drink the item.
+ */
 export function drink(item: Item): boolean;
-export function drink(arg1: Item, arg2: number): boolean;
-export function drink(arg1: number, arg2: Item): boolean;
+
+/**
+ * Attempts to drink a given number of booze item(s).
+ *
+ * If drinking the item would result in overdrinking, KoLmafia will warn the
+ * user and ask for confirmation. KoLmafia will also warn about missing effects
+ * and items that affect drinking (e.g. Ode to Booze, tuxedo shirt). If the user
+ * confirms a warning, KoLmafia will not warn the user again during the current
+ * session.
+ * @param item Item to drink
+ * @param qty Number of `item` to drink
+ * @return `true` if `item` is a drinkable item, `false` otherwise.
+ *    This returns `true` even if the player failed to drink the item(s).
+ */
+export function drink(item: Item, qty: number): boolean;
+
+/**
+ * Attempts to drink a given number of booze item(s).
+ *
+ * If drinking the item would result in overdrinking, KoLmafia will warn the
+ * user and ask for confirmation. KoLmafia will also warn about missing effects
+ * and items that affect drinking (e.g. Ode to Booze, tuxedo shirt). If the user
+ * confirms a warning, KoLmafia will not warn the user again during the current
+ * session.
+ * @param qty Number of `item` to drink
+ * @param item Item to drink
+ * @return `true` if `item` is a drinkable item, `false` otherwise.
+ *    This returns `true` even if the player failed to drink the item(s).
+ */
+export function drink(qty: number, item: Item): boolean;
+
+/**
+ * Attempts to drink a booze item, suppressing all warnings.
+ * @param item Item to drink
+ * @return `true` if `item` is a drinkable item, `false` otherwise.
+ *    This returns `true` even if the player failed to drink the item.
+ */
 export function drinksilent(item: Item): boolean;
-export function drinksilent(arg1: Item, arg2: number): boolean;
-export function drinksilent(arg1: number, arg2: Item): boolean;
-export function dump(arg: unknown): void;
-export function dump(arg: unknown, color: string): void;
+
+/**
+ * Attempts to drink a given number of booze item(s), suppressing all warnings.
+ * @param item Item to drink
+ * @param qty Number of `item` to drink
+ * @return `true` if `item` is a drinkable item, `false` otherwise.
+ *    This returns `true` even if the player failed to drink the item.
+ */
+export function drinksilent(item: Item, qty: number): boolean;
+
+/**
+ * Attempts to drink a given number of booze item(s), suppressing all warnings.
+ * @param qty Number of `item` to drink
+ * @param item Item to drink
+ * @return `true` if `item` is a drinkable item, `false` otherwise.
+ *    This returns `true` even if the player failed to drink the item.
+ */
+export function drinksilent(qty: number, item: Item): boolean;
+
+/**
+ * Prints the raw value of a variable.
+ *
+ * Note: This is not very useful for displaying the contents of a JavaScript
+ * object or array. Due to how the JavaScript-to-ASH conversion works,
+ * attempting to dump irregular data structures will usually cause an error.
+ * @param obj Variable to print
+ */
+export function dump(obj: unknown): void;
+
+/**
+ * Prints the raw value of a variable.
+ *
+ * Note: This is not very useful for displaying the contents of a JavaScript
+ * object or array. Due to how the JavaScript-to-ASH conversion works,
+ * attempting to dump irregular data structures will usually cause an error.
+ * @param obj Variable to print
+ * @param color Message color
+ */
+export function dump(obj: unknown, color: string): void;
+
+/**
+ * Attempts to eat a food item.
+ *
+ * When eating the item, KoLmafia will warn about missing effects and items that
+ * affect eating (e.g. Got Milk, Mayodiol). If the user confirms a warning,
+ * KoLmafia will not warn the user again during the current session.
+ * @param item Item to eat
+ * @return `true` if `item` is an edible item, `false` otherwise.
+ *    This returns `true` even if the player failed to eat the item(s).
+ */
 export function eat(item: Item): boolean;
-export function eat(arg1: Item, arg2: number): boolean;
-export function eat(arg1: number, arg2: Item): boolean;
+
+/**
+ * Attempts to eat a given number of food item(s).
+ *
+ * When eating the item(s), KoLmafia will warn about missing effects and items
+ * that affect eating (e.g. Got Milk, Mayodiol). If the user confirms a warning,
+ * KoLmafia will not warn the user again during the current session.
+ * @param item Item to eat
+ * @param qty Number of `item` to eat
+ * @return `true` if `item` is an edible item, `false` otherwise.
+ *    This returns `true` even if the player failed to eat the item(s).
+ */
+export function eat(item: Item, qty: number): boolean;
+
+/**
+ * Attempts to eat a given number of food item(s).
+ *
+ * When eating the item(s), KoLmafia will warn about missing effects and items
+ * that affect eating (e.g. Got Milk, Mayodiol). If the user confirms a warning,
+ * KoLmafia will not warn the user again during the current session.
+ * @param qty Number of `item` to eat
+ * @param item Item to eat
+ * @return `true` if `item` is an edible item, `false` otherwise.
+ *    This returns `true` even if the player failed to eat the item(s).
+ */
+export function eat(qty: number, item: Item): boolean;
+
+/**
+ * Attempts to eat a food item, suppressing all warnings.
+ * @param item Item to eat
+ * @return `true` if `item` is an ediable item, `false` otherwise.
+ *    This returns `true` even if the player failed to eat the item.
+ */
 export function eatsilent(item: Item): boolean;
-export function eatsilent(arg1: Item, arg2: number): boolean;
-export function eatsilent(arg1: number, arg2: Item): boolean;
-export function elementalResistance(arg: Element): number;
+
+/**
+ * Attempts to eat a given number of food item(s), suppressing all warnings.
+ * @param item Item to eat
+ * @param qty Number of `item` to eat
+ * @return `true` if `item` is an ediable item, `false` otherwise.
+ *    This returns `true` even if the player failed to eat the item.
+ */
+export function eatsilent(item: Item, qty: number): boolean;
+
+/**
+ * Attempts to eat a given number of food item(s), suppressing all warnings.
+ * @param qty Number of `item` to eat
+ * @param item Item to eat
+ * @return `true` if `item` is an ediable item, `false` otherwise.
+ *    This returns `true` even if the player failed to eat the item.
+ */
+export function eatsilent(qty: number, item: Item): boolean;
+
+/**
+ * Returns your Elemental Resistance for the given Element as a percentage of
+ * damage absorbed.
+ *
+ * For example, if your Hot Resistance is Very High (resistance level 6),
+ * calling this function with `Element.get('hot')` will return
+ * `55.27777862548828`.
+ * @param element Element to check
+ */
+export function elementalResistance(element: Element): number;
+
+/**
+ * Returns your Elemental Resistance for the Attack Element of the monster
+ * (`attackElement` property of the `Monster` object) that you are currently
+ * fighting.
+ *
+ * If the monster does not have an Attack Element, this returns 0.
+ */
 export function elementalResistance(): number;
-export function elementalResistance(arg: Monster): number;
+
+/**
+ * Returns your Elemental Resistance for the Attack Element of the given monster
+ * (`attackElement` property of the `Monster` object).
+ *
+ * If the monster does not have an Attack Element, this returns 0.
+ */
+export function elementalResistance(monster: Monster): number;
+
+/**
+ * Takes all items out of your closet.
+ * @return Whether all items in your closet were successfully retrieved
+ */
 export function emptyCloset(): boolean;
-export function enable(name: string): void;
+
+/**
+ * Enables gCLI commands and ASH functions previously disabled with `disable()`.
+ *
+ * Note: To enable a built-in library function, you must use the ASH function's
+ * name.
+ *
+ * @example
+ * ```js
+ *    enable("buffer_to_file"); // Enables the bufferToFile() function
+ * ```
+ * @param functionNames Names of gCLI commands and ASH functions (case
+ *    insensitive), separated by spaces (` `) and/or commas (`,`).
+ *    The special keyword `"all"` enables _all_ ASH functions.
+ */
+export function enable(functionNames: string): void;
+
+/**
+ * Checks if the `source` string ends with the given `suffix`.
+ * @deprecated Use `String.prototype.endsWith()` instead
+ * @param source Source string to search in
+ * @param suffix Suffix to search for
+ */
 export function endsWith(source: string, suffix: string): boolean;
+
+/**
+ * Puts the given familiar in your {@link https://kol.coldfront.net/thekolwiki/index.php/Crown_of_Thrones Crown of Thrones}.
+ * Also puts the CoT on yourself, if you don't already have it equipped.
+ * @return Whether the familiar was successfully put into the Crown of Thrones.
+ *    This returns `false` if you don't have the familiar, the Crown of Thrones,
+ *    or failed to equip the CoT.
+ */
 export function enthroneFamiliar(familiar: Familiar): boolean;
-export function entityDecode(arg: string): string;
+
+/**
+ * Decodes (i.e. unescapes) HTML entities in a string (e.g. `&amp;` to `&`).
+ *
+ * Note: This only supports some common entity names known to KoLmafia.
+ * In particular, entity names that are deemed "safe" in HTML are unsupported
+ * (e.g. `&lpar;` is _not_ converted to `(`).\
+ * Decimal entity numbers are fully supported (e.g. `&#8364;`), but hexadecimals
+ * are unsupported (e.g. `&#x20AC;`) and may result in garbage output.
+ * @param text String to decode
+ * @return Decoded string
+ */
+export function entityDecode(text: string): string;
+
+/**
+ * Encodes (i.e. escapes) special characters in a string to HTML entities
+ * (e.g. `"` to `&quot;`).
+ *
+ * This escapes all non-ASCII characters, as well as characters that are deemed
+ * "unsafe" in HTML (e.g. `&` and `"`).\
+ * KoLmafia uses entity names for characters that it knows about, and uses
+ * decimal entity numbers for other characters.
+ * @param text String to encode
+ * @return Encoded string
+ */
 export function entityEncode(arg: string): string;
+
+/**
+ * Attempts to equip an item.
+ * @param item Item to equip
+ * @return `false` if the item cannot be equipped, `true` otherwise
+ */
 export function equip(item: Item): boolean;
-export function equip(arg1: Item, arg2: Slot): boolean;
-export function equip(arg1: Slot, arg2: Item): boolean;
+
+/**
+ * Attempts to equip an item in the given slot.
+ * @param item Item to equip
+ * @param slot Slot to equip the item in
+ * @return `false` if the item cannot be equipped in the given slot, `true`
+ *    otherwise
+ */
+export function equip(item: Item, slot: Slot): boolean;
+
+/**
+ * Attempts to equip an item in the given slot.
+ * @param slot Slot to equip the item in
+ * @param item Item to equip
+ * @return `false` if the item cannot be equipped in the given slot, `true`
+ *    otherwise
+ */
+export function equip(slot: Slot, item: Item): boolean;
+
+/**
+ * Equips all your familiars with their familiar-specific equipments that you
+ * have in your inventory. This behaves similiarly to the "Equip All Familiars"
+ * button in the Familiar Trainer UI.
+ *
+ * - This respects your `autoSatisfyWithCloset` setting.
+ * - If you are out of Ronin/Hardcore, this automatically pulls any familiar-
+ *   specific equipment from your storage.
+ * @return `false` if an internal error occurred, `true` otherwise.
+ *    Note that this will return `true` even if no familiars were actually
+ *    equipped.
+ */
 export function equipAllFamiliars(): boolean;
-export function equippedAmount(arg: Item): number;
+
+/**
+ * Returns the amount of the given item currently equipped on your character.
+ * This includes any familiar equipment on your _active_ familiar, but not the
+ * ones in your terrarium.
+ * @param item Item to check
+ * @return Number of `item` currently equipped
+ */
+export function equippedAmount(item: Item): number;
+
+/**
+ * Returns the item currently equipped on your character in the given slot.
+ * @param slot Slot to check
+ * @return Item equipped on `slot`, or the `none` item if the slot is empty.
+ */
 export function equippedItem(slot: Slot): Item;
-export function eudora(): string;
-export function eudora(newEudora: string): boolean;
-export function everyCardName(name: string): string;
+
+/**
+ * Correspondence types returned by `eudora()` (no-argument form).
+ * @version r20630
+ */
+type EudoraReturnType =
+  | 'none'
+  | 'Penpal'
+  | 'GameInformPowerDailyPro Magazine'
+  | 'Xi Receiver Unit'
+  | 'New-You Club';
+
+/**
+ * Correspondence types accepted by `eudora()` (single-argument form).
+ * Note: The argument passed to `eudora()` is actually case-insensitive.
+ * @version r20630
+ */
+type EudoraInputType = 'penpal' | 'game' | 'xi' | 'newyou';
+
+/**
+ * Returns your currently active {@link https://kol.coldfront.net/thekolwiki/index.php/Correspondence correspondent}.
+ * @return Your current correspondent type, or `none` if you have no
+ *    correspondent set. If the correspondent type is unknown to KoLmafia, this
+ *    returns `Unknown`.\
+ *    Note: This is _different_ from the values accepted by the single-argument
+ *    form of `eudora()`.
+ */
+export function eudora(): EudoraReturnType | 'Unknown';
+
+/**
+ * Changes your active {@link https://kol.coldfront.net/thekolwiki/index.php/Correspondence correspondent}.
+ *    If an invalid correspondent type is given, this returns `false`.
+ * @param newEudora New correspondent type (case-insensitive).\
+ *    Note: This is _different_ from the values returned by the no-argument form
+ *    of `eudora()`.
+ * @return Whether the correspondent was changed successfully
+ * @example let isSuccessful = eudora("penpal");
+ */
+// Case-insensitive type-checking trick appropriated from:
+//    https://stackoverflow.com/a/64932909/
+export function eudora<T extends string>(
+  newEudora: Lowercase<T> extends EudoraInputType ? T : EudoraInputType
+): boolean;
+
+/**
+ * Card names returned by `everyCardName()`
+ * @version r20630
+ */
+type EveryCardName =
+  | 'X of Clubs' // 1
+  | 'X of Hearts' // 2
+  | 'X of Diamonds' // 3
+  | 'X of Spades' // 4
+  | 'X of Cups' // 5
+  | 'X of Wands' // 6
+  | 'X of Swords' // 7
+  | 'X of Coins' // 8
+  | 'XIII - Death' // 9
+  | 'Goblin Sapper' // 10
+  | 'The Hive' // 11
+  | 'Hunky Fireman Card' // 12
+  | 'V - The Hierophant' // 13
+  | 'XVIII - The Moon' // 14
+  | 'Werewolf' // 15
+  | 'XV - The Devil' // 16
+  | 'Fire Elemental' // 17
+  | 'Slimer Trading Card' // 18
+  | 'VII - The Chariot' // 19
+  | 'II - The High Priestess' // 20
+  | 'XII - The Hanged Man' // 21
+  | 'Plantable Greeting Card' // 22
+  | 'Pirate Birthday Card' // 23
+  | 'XIV - Temperance' // 24
+  | 'Unstable Portal' // 25
+  | 'XVII - The Star' // 26
+  | 'Suit Warehouse Discount Card' // 27
+  | 'Christmas Card' // 28
+  | 'Go Fish' // 29
+  | 'Aquarius Horoscope' // 30
+  | 'Plains' // 31
+  | 'Swamp' // 32
+  | 'Mountain' // 33
+  | 'Forest' // 34
+  | 'Island' // 35
+  | 'Healing Salve' // 36
+  | 'Dark Ritual' // 37
+  | 'Lightning Bolt' // 38
+  | 'Giant Growth' // 39
+  | 'Ancestral Recall' // 40
+  | 'Gift Card' // 41
+  | 'X of Papayas' // 42
+  | 'X of Salads' // 43
+  | 'IX - The Hermit' // 44
+  | 'IV - The Emperor' // 45
+  | 'Green Card' // 46
+  | 'XVI - The Tower' // 47
+  | 'The Race Card' // 48
+  | '0 - The Fool' // 49
+  | 'I - The Magician' // 50
+  | 'XI - Strength' // 51
+  | 'Lead Pipe' // 52
+  | 'Rope' // 53
+  | 'Wrench' // 54
+  | 'Candlestick' // 55
+  | 'Knife' // 56
+  | 'Revolver' // 57
+  | '1952 Mickey Mantle' // 58
+  | 'Spare Tire' // 59
+  | 'Extra Tank' // 60
+  | 'Sheep' // 61
+  | 'Year of Plenty' // 62
+  | 'Mine' // 63
+  | 'Laboratory' // 64
+  | 'X of Kumquats' // 65
+  | 'Professor Plum' // 66
+  | 'X - The Wheel of Fortune' // 67
+  | 'XXI - The World' // 68
+  | 'VI - The Lovers' // 69
+  | 'III - The Empress'; // 70
+
+/**
+ * Returns the name of a card from the {@link https://kol.coldfront.net/thekolwiki/index.php/Deck_of_Every_Card Deck of Every Card}
+ * which uniquely matches the given string.
+ * @param name String to search for (uses fuzzy matching)
+ * @return Full unambiguous name of the card that matches the given string.
+ *    If no match is found, or multiple matches are found, this returns an empty
+ *    string.
+ */
+export function everyCardName(name: string): EveryCardName | '';
+
+/**
+ * Estimates how much damage the current (or last encountered) monster will deal
+ * to you, given your current modifiers (including Monster Level adjustments).
+ * @return Expected damage dealt by the monster as an integer
+ */
 export function expectedDamage(): number;
-export function expectedDamage(arg: Monster): number;
+
+/**
+ * Estimates how much damage a given monster will deal to you, given your
+ * current modifiers (including Monster Level adjustments).
+ * @param monster Monster to check
+ * @return Expected damage dealt by the monster as an integer
+ */
+export function expectedDamage(monster: Monster): number;
+
+/**
+ * Returns your current experience bonus for your mainstat as a floating-point
+ * number.
+ * For example, if your bonus stat gain is +150%, this returns 1.5.
+ * @return Experience bonus for your mainstat
+ */
 export function experienceBonus(): number;
+
+/**
+ * Returns the result of evaluating a mathematical expression.
+ *
+ * This uses a mini-language different from JavaScript or ASH:
+ *
+ * - Whitespace is _not_ permitted.
+ * - Parentheses (`()`) can be used to group subexpressions.
+ * - Available operators: addition (`+`), subtraction (`-`),
+ *   multiplication (`*`), division (`/`), modulo (`%`), exponentiation (`^`)
+ * - Available functions: `abs(x)`, `ceil(x)`, `floor(x)`, `sqrt(x)`,
+ *   `min(x, y)`, `max(x, y)`
+ * - `pref(property)` can be used to retrieve the value of KoLmafia property.
+ *   `true` becomes 1, `false` becomes 0, and other values are parsed as a
+ *   floating-point number. A nonexistent property evaluates to 0.
+ *   - `pref(property,substr)` evaluates to 1 if the value of a KoLmafia
+ *     property contains the given substring, otherwise 0.
+ *
+ * An invalid expression or a computation error (e.g. divide by 0) will
+ * terminate the script _immediately_ without throwing an exception.
+ *
+ * _Note: This mini-language is used internally to compute the values of certain
+ * data-driven text files such as `modifiers.txt`._
+ * @param expr Mathematical expression
+ * @return Result of evaluating the expression as a floating-point number.
+ */
 export function expressionEval(expr: string): number;
-export function extractItems(string: string): {[item: string]: number};
-export function extractMeat(string: string): number;
+
+/**
+ * Parses the given HTML and returns a collection of items gained.
+ * This can be used to parse the results of an adventure, using another item,
+ * etc.
+ * @param html HTML from an in-game page
+ * @return Mapping of gained items to their quantities
+ */
+export function extractItems(html: string): {[item: string]: number};
+
+/**
+ * Parses the given HTML and returns the amount of Meat gained or lost.
+ * This can be used to parse the results of an adventure, using another item,
+ * etc.
+ * @param html HTML from an in-game page
+ * @return Amount of meat gained (positive) or lost (negative)
+ */
+export function extractMeat(html: string): number;
 export function familiarEquipment(familiar: Familiar): Item;
 export function familiarEquippedEquipment(familiar: Familiar): Item;
 export function familiarWeight(familiar: Familiar): number;

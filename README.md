@@ -20,17 +20,62 @@ visitUrl(123); // Type error
 
 kolmafia-types requires TypeScript 3.0 or above.
 
-To use kolmafia-types in your project, you need a package manager that supports package aliases:
+To use kolmafia-types in your project, you can choose one of:
+
+1. [Install kolmafia-types using a `kolmafia` alias](#method-1-install-using-the-kolmafia-alias)
+2. [Tell TypeScript to use a custom path to resolve `kolmafia`](#method-2-use-a-custom-path-to-resolve-kolmafia)
+
+### Method 1: Install using the `kolmafia` alias
+
+This is the recommended method.
+
+Install kolmafia-types using a package manager that supports package aliases:
 
 ```sh
-# NPM v6.9.0 or above
+# NPM >= 6.9.0, <= 7 (see notes)
 npm install --save-dev kolmafia@npm:kolmafia-types
 
-# Yarn v0.17.0 or above
+# Yarn >= 0.17.0
 yarn add --dev kolmafia@npm:kolmafia-types
 ```
 
 This installs kolmafia-types under the `kolmafia` alias.
+
+_Note: As of writing, NPM v7 has a [bug](https://github.com/npm/cli/issues/2800)
+that causes the `npm outdated` command to fail if you have an aliased package.
+If you cannot use package aliases, you may stick to NPM v6.x, or use the method
+below._
+
+### Method 2: Use a custom path to resolve `kolmafia`
+
+To use this method, install kolmafia-types normally:
+
+```sh
+# NPM
+npm install --save-dev kolmafia-types
+
+# Yarn
+yarn add --dev kolmafia-types
+```
+
+Then, add the `paths` field in your `tsconfig.json`:
+
+```jsonc
+{
+  "compilerOptions": {
+    // ...other options...
+    "paths": {
+      "kolmafia": ["./node_modules/kolmafia-types"]
+    }
+  }
+}
+```
+
+This tells TypeScript to retrieve type definitions for `kolmafia` by looking at
+where kolmafia-types is installed.
+
+_Note: The actual path may be different, depending on where your `tsconfig.json`
+is, and your `compilerOptions.baseUrl` setting._
 
 ## Usage
 
