@@ -14,13 +14,14 @@
     "src"
   ],
   "engines": {
+    "node": ">= 11.14 || ^10.17",
     "npm": ">= 6.9.0",
     "yarn": ">= 0.17.0"
   },
   "scripts": {
     "lint": "gts lint",
     "fix": "gts fix",
-    "test": "tsd",
+    "test": "ts-node run-tests.ts",
     "posttest": "npm run lint"
   },
   "repository": {
