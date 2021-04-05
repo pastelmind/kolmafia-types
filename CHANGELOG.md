@@ -9,26 +9,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added `canEquip(fam: Familiar)` form (#15)
-- Detailed comments for library functions that start with D up to E. (#19)
+- Added `canEquip(fam: Familiar)` form ([#15])
+- Detailed comments for library functions that start with D up to E. ([#19])
 
 ### Fixed
 
 - Properly specify the license of [kolmafia-js], which this project derives
-  from.(#16)
+  from. ([#16])
 - Fixed a bug that caused TypeScript to select the wrong overloaded form of
-  `pickPocket()` when a number is passed as the argument. (#17)
+  `pickPocket()` when a number is passed as the argument. ([#17])
+
+[#15]: https://github.com/pastelmind/kolmafia-types/pull/15
+[#16]: https://github.com/pastelmind/kolmafia-types/pull/16
+[#17]: https://github.com/pastelmind/kolmafia-types/pull/17
+[#19]: https://github.com/pastelmind/kolmafia-types/pull/19
 
 ## [0.0.6] - 2021-02-20
 
 ### Added
 
-- `myRobotEnergy()`, `myRobotScraps()` (#14)
+- `myRobotEnergy()`, `myRobotScraps()` ([#14])
 
 ### Fixed
 
 - `dump()` and `toJson()` accept arguments of type `unknown` instead of `null`.
   This incorporates a change in [kolmafia-js] v1.0.4.
+
+[#14]: https://github.com/pastelmind/kolmafia-types/pull/14
 
 ## [0.0.5] - 2021-02-09
 
@@ -43,36 +50,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
-- Custom `valueOf()` methods are no longer available on enumerated types. (#13)
+- Custom `valueOf()` methods are no longer available on enumerated types ([#13])
+
+[#13]: https://github.com/pastelmind/kolmafia-types/pull/13
 
 ## [0.0.4] - 2021-01-29
 
 ### Added
 
-- Add `valueOf()` on enumerated classes. (#10)
+- Add `valueOf()` on enumerated classes. ([#10])
 
   - The following classes return integer IDs:
     Class, Effect, Familiar, Item, Monster, Servant, Skill, Slot, Thrall, Vykea
   - All other classes return 0, and `valueOf()` is marked as @deprecated
     (Bounty, Coinmaster, Element, Location, Phylum, Stat)
 
-- ZLib: Add `rnum()`, `vprint()` (#12)
+- ZLib: Add `rnum()`, `vprint()` ([#12])
 
 ### Fixed
 
-- Fix arguments of `min()` and `max()`. They are now properly variadic. (#11)
+- Fix arguments of `min()` and `max()`. They are now properly variadic. ([#11])
+
+[#10]: https://github.com/pastelmind/kolmafia-types/pull/10
+[#11]: https://github.com/pastelmind/kolmafia-types/pull/11
+[#12]: https://github.com/pastelmind/kolmafia-types/pull/12
 
 ## [0.0.3] - 2021-01-21
 
 ### Added
 
-- Support `isDarkMode()` (KoLmafia r20566) (#9)
+- Support `isDarkMode()` (KoLmafia r20566) ([#9])
+
+[#9]: https://github.com/pastelmind/kolmafia-types/pull/9
 
 ## [0.0.2] - 2021-01-21
 
 ### Added
 
-- Added (partial) type definitions for some popular ASH scripts (#8):
+- Added (partial) type definitions for some popular ASH scripts ([#8]):
   - CanAdv r109
   - EatDrink 3.2
   - PriceAdvisor 1.62
@@ -80,14 +95,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Add TypeScript version requirement (>= 3.0) (#1)
+- Add TypeScript version requirement (>= 3.0) ([#1])
 
 ### Fixed
 
-- Use `unknown` instead of `any` (#1)
+- Use `unknown` instead of `any` ([#1])
 - The `get()` static method of `Effect`, `Item`, `Familiar`, `Item`, `Monster`,
   `Servant`, `Skill`, and `Thrall` now accept numbers (integer IDs) in addition
-  to strings (names). (#4)
+  to strings (names). ([#4])
+
+[#1]: https://github.com/pastelmind/kolmafia-types/pull/1
+[#4]: https://github.com/pastelmind/kolmafia-types/pull/4
+[#8]: https://github.com/pastelmind/kolmafia-types/pull/8
 
 ## [0.0.1] - 2021-01-20
 
