@@ -12,6 +12,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `canEquip(fam: Familiar)` form ([#15])
 - Detailed comments for library functions that start with D up to E. ([#19])
 
+### Changed
+
+- Now requires TypeScript 4.1+ ([#20])
+
 ### Fixed
 
 - Properly specify the license of [kolmafia-js], which this project derives
@@ -23,6 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [#16]: https://github.com/pastelmind/kolmafia-types/pull/16
 [#17]: https://github.com/pastelmind/kolmafia-types/pull/17
 [#19]: https://github.com/pastelmind/kolmafia-types/pull/19
+[#20]: https://github.com/pastelmind/kolmafia-types/pull/20
 
 ## [0.0.6] - 2021-02-20
 

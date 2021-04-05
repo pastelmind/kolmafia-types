@@ -18,7 +18,9 @@ visitUrl(123); // Type error
 
 ## Installation
 
-kolmafia-types requires TypeScript 3.0 or above.
+**kolmafia-types requires TypeScript 4.1 or above.** If your TypeScript version
+is lower than this, you may see compiler error messages like
+"Cannot find module 'kolmafia-types'."
 
 To use kolmafia-types in your project, you can choose one of:
 
