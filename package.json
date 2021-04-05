@@ -1,6 +1,6 @@
 {
   "name": "kolmafia-types",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "TypeScript type declarations for KoLmafia. Alternative to kolmafia-js.",
   "typesVersions": {
     ">=4.1": {

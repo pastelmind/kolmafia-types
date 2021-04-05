@@ -17,6 +17,8 @@ List of sections:
 
 ## [Unreleased]
 
+## [0.1.0] - 2021-04-05
+
 ### Added
 
 - Added `canEquip(fam: Familiar)` form ([#15])
@@ -129,7 +131,8 @@ List of sections:
 
 - Initial release
 
-[unreleased]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.6...HEAD
+[unreleased]: https://github.com/pastelmind/kolmafia-types/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.6...v0.1.0
 [0.0.6]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.4...v0.0.5
 [0.0.4]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.3...v0.0.4
