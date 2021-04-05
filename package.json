@@ -2,19 +2,26 @@
   "name": "kolmafia-types",
   "version": "0.0.6",
   "description": "TypeScript type declarations for KoLmafia. Alternative to kolmafia-js.",
-  "types": "src/index.d.ts",
+  "typesVersions": {
+    ">=4.1": {
+      "*": [
+        "src/index.d.ts"
+      ]
+    }
+  },
   "files": [
     "contrib",
     "src"
   ],
   "engines": {
+    "node": ">= 11.14 || ^10.17",
     "npm": ">= 6.9.0",
     "yarn": ">= 0.17.0"
   },
   "scripts": {
     "lint": "gts lint",
     "fix": "gts fix",
-    "test": "tsd",
+    "test": "ts-node run-tests.ts",
     "posttest": "npm run lint"
   },
   "repository": {
@@ -34,7 +41,9 @@
   },
   "homepage": "https://github.com/pastelmind/kolmafia-types#readme",
   "devDependencies": {
+    "@types/node": "^12.20.7",
     "gts": "^3.1.0",
+    "ts-node": "^9.1.1",
     "tsd": "^0.14.0",
     "typescript": "^4.1.3"
   }
