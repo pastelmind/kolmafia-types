@@ -17,6 +17,17 @@ visitUrl('main.php'); // OK
 visitUrl(123); // Type error
 ```
 
+## Why another type definition for KoLmafia?
+
+kolmafia-types provides some features missing in kolmafia-js:
+
+- Curated JSDoc comments for KoLmafia functions, including `@link`s to KoL wiki
+  pages, `@deprecated` warnings, and `@version` of KoLmafia when the function
+  was introduced.
+  (_Note: work in progress_)
+- [Type definitions for popular ASH scripts](#type-definitions-for-ash-scripts)
+- Frequent(-ish) updates
+
 ## Installation
 
 **kolmafia-types requires TypeScript 4.1 or above.** If your TypeScript version
