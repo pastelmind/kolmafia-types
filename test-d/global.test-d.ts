@@ -2,7 +2,7 @@
  * @file Type tests for global.d.ts.
  */
 
-import {expectError, expectType} from 'tsd';
+import {expectError, expectNotAssignable, expectType} from 'tsd';
 import '../src';
 
 expectType<Bounty>(Bounty.get('foo'));
@@ -187,3 +187,59 @@ expectError(Vykea.get(null));
 expectError(Vykea.get(/regex/));
 expectError(Vykea.get(Symbol('foo')));
 expectError(Vykea.get({}));
+
+// Forbid using KoLmafia built-in classes as regular functions
+
+expectNotAssignable<CallableFunction>(Bounty);
+expectNotAssignable<CallableFunction>(Class);
+expectNotAssignable<CallableFunction>(Coinmaster);
+expectNotAssignable<CallableFunction>(Effect);
+expectNotAssignable<CallableFunction>(Element);
+expectNotAssignable<CallableFunction>(Familiar);
+expectNotAssignable<CallableFunction>(Item);
+expectNotAssignable<CallableFunction>(Location);
+expectNotAssignable<CallableFunction>(Monster);
+expectNotAssignable<CallableFunction>(Phylum);
+expectNotAssignable<CallableFunction>(Servant);
+expectNotAssignable<CallableFunction>(Skill);
+expectNotAssignable<CallableFunction>(Slot);
+expectNotAssignable<CallableFunction>(Stat);
+expectNotAssignable<CallableFunction>(Thrall);
+expectNotAssignable<CallableFunction>(Vykea);
+
+// Forbid directly instantiating KoLmafia built-in classes
+// Note: tsd cannot check if the constructor is private,
+// so we need to use @ts-expect-error.
+
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Bounty();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Class();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Coinmaster();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Effect();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Element();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Familiar();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Item();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Location();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Monster();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Phylum();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Servant();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Skill();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Slot();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Stat();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Thrall();
+// @ts-expect-error KoLmafia built-ins cannot be directly instantiated
+new Vykea();
