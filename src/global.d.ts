@@ -34,7 +34,15 @@ SOFTWARE.
  */
 
 declare global {
+  // KoLmafia built-in classes cannot be instanted; KoLmafia will abort the
+  // JavaScript runtime.
+  // As such, all constructors have been made private to prevent users from
+  // attempting to instantiate them. This still allows the classes to be used in
+  // `instanceof` checks.
+
   class Bounty {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(name: string): Bounty;
     static get(names: string[]): Bounty[];
     static all(): Bounty[];
@@ -55,6 +63,8 @@ declare global {
   }
 
   class Class {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(name: string): Class;
     static get(names: string[]): Class[];
     static all(): Class[];
@@ -63,6 +73,8 @@ declare global {
   }
 
   class Coinmaster {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(name: string): Coinmaster;
     static get(names: string[]): Coinmaster[];
     static all(): Coinmaster[];
@@ -83,6 +95,8 @@ declare global {
   }
 
   class Effect {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(nameOrId: number | string): Effect;
     static get(namesAndIds: (number | string)[]): Effect[];
     static all(): Effect[];
@@ -107,6 +121,8 @@ declare global {
   }
 
   class Element {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(name: string): Element;
     static get(names: string[]): Element[];
     static all(): Element[];
@@ -115,6 +131,8 @@ declare global {
   }
 
   class Familiar {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(nameOrId: number | string): Familiar;
     static get(namesAndIds: (number | string)[]): Familiar[];
     static all(): Familiar[];
@@ -195,6 +213,8 @@ declare global {
   }
 
   class Item {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(nameOrId: number | string): Item;
     static get(namesAndIds: (number | string)[]): Item[];
     static all(): Item[];
@@ -300,6 +320,8 @@ declare global {
   }
 
   class Location {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(name: string): Location;
     static get(names: string[]): Location[];
     static all(): Location[];
@@ -334,6 +356,8 @@ declare global {
   }
 
   class Monster {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(nameOrId: number | string): Monster;
     static get(namesAndIds: (number | string)[]): Monster[];
     static all(): Monster[];
@@ -398,6 +422,8 @@ declare global {
   }
 
   class Phylum {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(name: string): Phylum;
     static get(names: string[]): Phylum[];
     static all(): Phylum[];
@@ -406,6 +432,8 @@ declare global {
   }
 
   class Servant {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(nameOrId: number | string): Servant;
     static get(namesAndIds: (number | string)[]): Servant[];
     static all(): Servant[];
@@ -430,6 +458,8 @@ declare global {
   }
 
   class Skill {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(nameOrId: number | string): Skill;
     static get(namesAndIds: (number | string)[]): Skill[];
     static all(): Skill[];
@@ -470,18 +500,24 @@ declare global {
   }
 
   class Slot {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(name: string): Slot;
     static get(names: string[]): Slot[];
     static all(): Slot[];
   }
 
   class Stat {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(name: string): Stat;
     static get(names: string[]): Stat[];
     static all(): Stat[];
   }
 
   class Thrall {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(nameOrId: number | string): Thrall;
     static get(namesAndIds: (number | string)[]): Thrall[];
     static all(): Thrall[];
@@ -502,6 +538,8 @@ declare global {
   }
 
   class Vykea {
+    /** KoLmafia built-in classes cannot be instantiated directly. */
+    private constructor();
     static get(name: string): Vykea;
     static get(names: string[]): Vykea[];
     static all(): Vykea[];
