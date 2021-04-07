@@ -17,6 +17,13 @@ List of sections:
 
 ## [Unreleased]
 
+### Changed
+
+- Built-in classes can no longer be instanted directly; their constructors have
+  been marked as private. ([#23])
+
+[#23]: https://github.com/pastelmind/kolmafia-types/pull/23
+
 ## [0.1.0] - 2021-04-05
 
 ### Added
