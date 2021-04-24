@@ -243,3 +243,18 @@ new Stat();
 new Thrall();
 // @ts-expect-error KoLmafia built-ins cannot be directly instantiated
 new Vykea();
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+expectType<any>(require('foo'));
+expectError(require());
+if (require.main) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  expectType<any>(require.main.exports);
+  expectType<string>(require.main.id);
+} else {
+  expectType<undefined>(require.main);
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+expectType<any>(module.exports);
+expectType<string>(module.id);
