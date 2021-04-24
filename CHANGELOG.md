@@ -17,12 +17,17 @@ List of sections:
 
 ## [Unreleased]
 
+### Added
+
+- Type definitions for CommonJS `require()` and `module`. ([#24])
+
 ### Changed
 
 - Built-in classes can no longer be instanted directly; their constructors have
   been marked as private. ([#23])
 
 [#23]: https://github.com/pastelmind/kolmafia-types/pull/23
+[#24]: https://github.com/pastelmind/kolmafia-types/pull/24
 
 ## [0.1.0] - 2021-04-05
 

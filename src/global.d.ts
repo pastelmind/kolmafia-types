@@ -560,4 +560,21 @@ declare global {
     /** Attack element */
     readonly attackElement: Element;
   }
+
+  // eslint-disable-next-line no-var
+  var require: RhinoRequire;
+  // eslint-disable-next-line no-var
+  var module: RhinoModule;
+}
+
+interface RhinoRequire {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (id: string): any;
+  main: RhinoModule | undefined;
+}
+
+interface RhinoModule {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  exports: any;
+  id: string;
 }

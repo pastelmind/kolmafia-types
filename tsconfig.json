@@ -1,6 +1,8 @@
 {
   "extends": "./node_modules/gts/tsconfig-google.json",
   "compilerOptions": {
-    "resolveJsonModule": true
-  }
+    // We don't want @types/node to interfere with our own types (e.g. require())
+    "types": []
+  },
+  "include": ["src", "test-d"]
 }
