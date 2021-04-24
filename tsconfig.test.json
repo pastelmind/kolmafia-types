@@ -1,0 +1,7 @@
+{
+  "extends": "gts/tsconfig-google.json",
+  "compilerOptions": {
+    "resolveJsonModule": true
+  },
+  "exclude": ["src", "test-d"]
+}

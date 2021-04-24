@@ -21,7 +21,7 @@
   "scripts": {
     "lint": "gts lint",
     "fix": "gts fix",
-    "test": "ts-node run-tests.ts",
+    "test": "ts-node --project tsconfig.test.json run-tests.ts",
     "posttest": "npm run lint"
   },
   "repository": {
