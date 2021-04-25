@@ -1689,6 +1689,16 @@ export function getStackTrace(): {file: string; name: string; line: number}[];
 export function getStash(): {[item: string]: number};
 export function getStorage(): {[item: string]: number};
 export function getVersion(): string;
+
+/**
+ * Returns the item that represents the appliance installed in your
+ * {@link https://kol.coldfront.net/thekolwiki/index.php/Your_Workshed Workshed}.
+ * @version r20678
+ * @return Item used to install your current workshed appliance, e.g.
+ *    `diabolic pizza cube`. If you don't have a Workshed, returns `none`.
+ */
+export function getWorkshed(): Item;
+
 export function gnomadsAvailable(): boolean;
 export function goalExists(check: string): boolean;
 export function groupString(
@@ -1930,6 +1940,17 @@ export function mySessionAdv(): number;
 export function mySessionItems(): {[item: string]: number};
 export function mySessionItems(item: Item): number;
 export function mySessionMeat(): number;
+
+/**
+ * Returns the contents of your current session results. This includes not only
+ * meat and items gained/lost, but also stats, adventures, and pseudo-items such
+ * as pirate insults, hobo parts, etc.
+ * @version r20680
+ * @return Object whose keys represent each entry in the session results tally,
+ *    and whose values represent the changed amount.
+ */
+export function mySessionResults(): {[what: string]: number};
+
 export function mySign(): string;
 export function mySoulsauce(): number;
 export function mySpleenUse(): number;
