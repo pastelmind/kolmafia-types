@@ -107,3 +107,21 @@ export function vprint<VerbosityT extends number>(
   color: string,
   level: VerbosityT
 ): VerbosityT extends 0 ? never : boolean;
+
+/**
+ * Prints a message to the gCLI, obeying the user's current verbosity settings,
+ * and choosing a color depending on the user's KoLmafia theme.
+ *
+ * If `level` is 0, aborts the script.
+ * @param message
+ * @param lightColor Text color for light themes (hex code or CSS color name)
+ * @param darkColor Text color for dark themes (hex code or CSS color name)
+ * @param level Verbosity level (integer between -10 and 10)
+ * @return `true` if `level` > 0, `false` if `level` < 0
+ */
+export function vprint<VerbosityT extends number>(
+  message: string,
+  lightColor: string,
+  darkColor: string,
+  level: VerbosityT
+): VerbosityT extends 0 ? never : boolean;
