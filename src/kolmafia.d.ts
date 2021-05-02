@@ -1615,30 +1615,204 @@ export function extractItems(html: string): {[item: string]: number};
  * @return Amount of meat gained (positive) or lost (negative)
  */
 export function extractMeat(html: string): number;
+
+/**
+ * Returns the representative familiar-specific equipment of a familiar.
+ * If the familiar has multiple familiar-specific equipment, returns the
+ * "default" variant (usually the one that can be won at the Cake-Shaped Arena).
+ * @param familiar Familiar to check
+ * @return Familiar-specific equipment for the familiar, or `none` if the
+ *    familiar does not have a familiar-specific equipment.
+ */
 export function familiarEquipment(familiar: Familiar): Item;
+
+/**
+ * Returns the item currently worn by the `familiar`. This includes items on
+ * familiars that can wear player equipment (e.g.
+ * {@link https://kol.coldfront.net/thekolwiki/index.php/Left-Hand_Man Left-Hand Man}).
+ * @param familiar Familiar to check
+ * @return Equipment worn by the familiar, or `none` if the familiar has no item
+ *    equipped.
+ */
 export function familiarEquippedEquipment(familiar: Familiar): Item;
+
+/**
+ * Returns the base weight of the familiar.
+ * @param familiar Familiar weight
+ * @return Base weight of the familiar without applying any modifiers
+ * @see weightAdjustment
+ */
 export function familiarWeight(familiar: Familiar): number;
+
+/**
+ * Retrieves an object containing your favorite familiars.
+ * @return Object containing your favirite familiars. Each key is the name of a
+ *    familiar type, and each value is a boolean that indicates whether the
+ *    familiar can be used under current restrictions (i.e. the return value of
+ *    `canEquip()` for that familiar).
+ */
 export function favoriteFamiliars(): {[familiar: string]: boolean};
-export function faxbot(monsterName: Monster): boolean;
-export function faxbot(monsterName: Monster, botName: string): boolean;
+
+/**
+ * Requests a fax for the `monster` from a
+ * {@link https://kol.coldfront.net/thekolwiki/index.php/A_Fax_Machine#FaxBots FaxBot}
+ * known to KoLmafia that is currently online and has the requested monster.
+ * As of r19492, this includes EasyFax and CheeseFax.
+ * @param monster Monster to request a fax for
+ * @return Whether the fax was successfully requested
+ */
+export function faxbot(monster: Monster): boolean;
+
+/**
+ * Requests a fax for the `monster` from a specific
+ * {@link https://kol.coldfront.net/thekolwiki/index.php/A_Fax_Machine#FaxBots FaxBot}
+ * @param monster Monster to request a fax for
+ * @param botName Name of the faxbot
+ * @return Whether the fax was successfully requested
+ */
+export function faxbot(monster: Monster, botName: string): boolean;
+
+/**
+ * Checks if the last choice adventure has lead into a fight page.
+ */
 export function fightFollowsChoice(): boolean;
-export function fileToArray(var1: string): {[key: number]: string};
-export function fileToBuffer(var1: string): string;
-export function fileToMap(var1: string, var2: unknown): boolean;
-export function fileToMap(var1: string, var2: unknown, var3: boolean): boolean;
+
+/**
+ * Loads the contents of a file, skipping empty lines or lines beginning with
+ * `#`.
+ * Despite the name, this does _not_ return an array.
+ * @param path Relative path to a file on disk or embedded within KoLmafia.
+ *    The path must be relative to KoLmafia's root directory.
+ * @return Object whose keys are "row numbers" and values are the contents of
+ *    each line. Row numbers start at 1, so the object looks like this:
+ *
+ *    ```
+ *    { "1": "line 1 contents", "2": "line 2 contents", ... }
+ *    ```
+ */
+export function fileToArray(path: string): {[row: number]: string};
+
+/**
+ * Loads the contents of a file as a string.
+ * Unlike other file I/O functions, this does not discard empty lines or lines
+ * beginning with `#`.
+ * @param path Relative path to a file on disk or embedded within KoLmafia.
+ *    The path must be relative to KoLmafia's root directory.
+ * @return Contents of the file
+ */
+export function fileToBuffer(path: string): string;
+
+/**
+ * Loads the contents of a file into an ASH map.
+ * Since ASH maps cannot be created or used directly in JavaScript, this
+ * function is useless.
+ * @deprecated Use `fileToArray()` or `fileToBuffer()` instead
+ * @param path Relative path to a file on disk or embedded within KoLmafia.
+ *    The path must be relative to KoLmafia's root directory.
+ * @param map ASH map to load the data into
+ * @return Whether the file was loaded successfully
+ */
+export function fileToMap(path: string, map: unknown): boolean;
+
+/**
+ * Loads the contents of a file into an ASH map.
+ * Since ASH maps cannot be created or used directly in JavaScript, this
+ * function is useless.
+ * @deprecated Use `fileToArray()` or `fileToBuffer()` instead
+ * @param path Relative path to a file on disk or embedded within KoLmafia.
+ *    The path must be relative to KoLmafia's root directory.
+ * @param map ASH map to load the data into
+ * @param compact If `false`, KoLmafia will attempt to parse the text file as a
+ *    legacy "non-compact" format. This parameter exists for backwards
+ *    compatibility and should not be used in newer scripts.
+ * @return Whether the file was loaded successfully
+ */
+export function fileToMap(
+  path: string,
+  map: unknown,
+  compact: boolean
+): boolean;
+
+/**
+ * Rounds down a number to the nearest integer.
+ * @deprecated Use `Math.floor()` instead.
+ */
 export function floor(arg: number): number;
+
+/**
+ * Checks whether you have access to the
+ * {@link https://kol.coldfront.net/thekolwiki/index.php/The_Florist_Friar%27s_Cottage Florist Friar}.
+ */
 export function floristAvailable(): boolean;
-export function flushMonsterManuelCache(): boolean;
-export function formField(key: string): string;
-export function formFields(): {[key: string]: string};
+
+/**
+ * Flushes KoLmafia's internal cache for your
+ * {@link https://kol.coldfront.net/thekolwiki/index.php/Monster_Manuel Monster Manuel}.
+ * The cache can be repopulated by manually visiting the Monster Manuel pages.
+ * @return Always returns `true`
+ */
+export function flushMonsterManuelCache(): true;
+
+/**
+ * Returns the submitted value of a URL parameter or form input field.
+ * This can be used in a relay script to process form submissions.
+ * @param name Name of the URL parameter or form input.
+ * @return Value of the URL parameter/form input, or an empty string if the
+ *    parameter is not present.
+ */
+export function formField(name: string): string;
+
+/**
+ * Returns all URL parameters and submitted form input values.
+ * This can be used in a relay script to process form submissions.
+ * @return Object that maps each URL parameter name or form input field name to
+ *    to its value.
+ */
+export function formFields(): {[name: string]: string};
+
+/**
+ * Parses a date/time string using `inFormat`, then converts it to another
+ * string using `outFormat`.
+ *
+ * Both `inFormat` and `outFormat` use date/time format patterns supported by
+ * {@link https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html `java.text.SimpleDateFormat`}.
+ *
+ * This is roughly equivalent to calling
+ * ```
+ * timestampToDate(dateToTimestamp(inFormat, text), outFormat);
+ * ```
+ * @param inFormat Format pattern that describes `text`
+ * @param text Date/time string to parse
+ * @param outFormat Format pattern to use for producing the final string
+ * @return Reformatted date/time string
+ */
 export function formatDateTime(
   inFormat: string,
-  dateTimeString: string,
+  text: string,
   outFormat: string
 ): string;
+
+/**
+ * Checks if the current character has completed the
+ * {@link https://kol.coldfront.net/thekolwiki/index.php/Deep_Fat_Friar%27s_Gate_Quest Deep Fat Friars' Gate quest}.
+ */
 export function friarsAvailable(): boolean;
+
+/**
+ * Returns the fuel cost of an
+ * {@link https://kol.coldfront.net/thekolwiki/index.php/Asdon_Martin Asdon Martin}
+ * skill.
+ * @param skill Skill to check
+ * @return Fuel cost if the `skill` is an Asdon Martin skill, or 0 for other
+ * skills.
+ */
 export function fuelCost(skill: Skill): number;
+
+/**
+ * Returns the current character's maximum fullness.
+ */
 export function fullnessLimit(): number;
+
 export function gamedayToInt(): number;
 export function gamedayToString(): string;
 export function gametimeToInt(): number;
