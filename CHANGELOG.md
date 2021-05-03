@@ -20,6 +20,7 @@ List of sections:
 ### Added
 
 - Type definitions for CommonJS `require()` and `module`. ([#24])
+- Detailed comments for library functions that start with F. ([#29])
 
 ### Changed
 
@@ -28,6 +29,7 @@ List of sections:
 
 [#23]: https://github.com/pastelmind/kolmafia-types/pull/23
 [#24]: https://github.com/pastelmind/kolmafia-types/pull/24
+[#29]: https://github.com/pastelmind/kolmafia-types/pull/29
 
 ## [0.1.0] - 2021-04-05
 
