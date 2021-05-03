@@ -23,7 +23,7 @@ List of sections:
 
 - Type definitions for CommonJS `require()` and `module`. ([#24])
 - Detailed comments for library functions that start with F. ([#29])
-- Add `getWorkshed()` (r20678) and `mySessionResults` (r20680) ([#25])
+- Add `getWorkshed()` (r20678) and `mySessionResults()` (r20680) ([#25])
 - ZLib: Add dark mode-aware version of `vprint()` ([#26])
 
 ### Changed
