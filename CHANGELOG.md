@@ -17,10 +17,14 @@ List of sections:
 
 ## [Unreleased]
 
+## [0.1.1] - 2021-05-03
+
 ### Added
 
 - Type definitions for CommonJS `require()` and `module`. ([#24])
 - Detailed comments for library functions that start with F. ([#29])
+- Add `getWorkshed()` (r20678) and `mySessionResults` (r20680) ([#25])
+- ZLib: Add dark mode-aware version of `vprint()` ([#26])
 
 ### Changed
 
@@ -29,6 +33,8 @@ List of sections:
 
 [#23]: https://github.com/pastelmind/kolmafia-types/pull/23
 [#24]: https://github.com/pastelmind/kolmafia-types/pull/24
+[#25]: https://github.com/pastelmind/kolmafia-types/pull/25
+[#26]: https://github.com/pastelmind/kolmafia-types/pull/26
 [#29]: https://github.com/pastelmind/kolmafia-types/pull/29
 
 ## [0.1.0] - 2021-04-05
@@ -145,7 +151,8 @@ List of sections:
 
 - Initial release
 
-[unreleased]: https://github.com/pastelmind/kolmafia-types/compare/v0.1.0...HEAD
+[unreleased]: https://github.com/pastelmind/kolmafia-types/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/pastelmind/kolmafia-types/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.6...v0.1.0
 [0.0.6]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.5...v0.0.6
 [0.0.5]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.4...v0.0.5
