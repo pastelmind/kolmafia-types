@@ -640,12 +640,6 @@ export function candyForTier(tier: number): Item[];
 export function candyForTier(tier: number, flags: number): Item[];
 
 /**
- * Rounds up a number to the nearest integer.
- * @deprecated Use `Math.ceil()` instead.
- */
-export function ceil(value: number): number;
-
-/**
  * Sets your mind-control device (MCD) to the specified `level`.
  *
  * If the request fails, this throws a string (`"Script interrupted."`).
@@ -1734,12 +1728,6 @@ export function fileToMap(
 ): boolean;
 
 /**
- * Rounds down a number to the nearest integer.
- * @deprecated Use `Math.floor()` instead.
- */
-export function floor(arg: number): number;
-
-/**
  * Checks whether you have access to the
  * {@link https://kol.coldfront.net/thekolwiki/index.php/The_Florist_Friar%27s_Cottage Florist Friar}.
  */
@@ -1991,8 +1979,6 @@ export function lightningCost(skill: Skill): number;
 export function limitMode(): string;
 export function loadHtml(string: string): string;
 export function lockFamiliarEquipment(lock: boolean): void;
-export function logN(arg: number): number;
-export function logN(arg: number, base: number): number;
 export function logprint(string: string): void;
 export function makeUrl(arg1: string, arg2: boolean, arg3: boolean): string;
 export function mallPrice(item: Item): number;
@@ -2002,12 +1988,6 @@ export function mallPrices(category: string, tiers: string): number;
 export function manaCostModifier(): number;
 export function mapToFile(var1: unknown, var2: string): boolean;
 export function mapToFile(var1: unknown, var2: string, var3: boolean): boolean;
-
-/**
- * Returns the largest number among the given arguments.
- * @deprecated Use `Math.max()`
- */
-export function max(arg1: number, ...args: number[]): number;
 export function maximize(
   maximizerStringValue: string,
   isSpeculateOnlyValue: boolean
@@ -2035,12 +2015,6 @@ export function maximize(
 export function meatDrop(): number;
 export function meatDrop(arg: Monster): number;
 export function meatDropModifier(): number;
-
-/**
- * Returns the smallest number among the given arguments.
- * @deprecated Use `Math.min()`
- */
-export function min(arg1: number, ...args: number[]): number;
 export function minstrelInstrument(): Item;
 export function minstrelLevel(): number;
 export function minstrelQuest(): boolean;
@@ -2199,7 +2173,6 @@ export function putStash(arg1: Item, arg2: number): boolean;
 export function putStash(arg1: number, arg2: Item): boolean;
 export function pvpAttacksLeft(): number;
 export function rainCost(skill: Skill): number;
-export function random(arg: number): number;
 export function rawDamageAbsorption(): number;
 export function refreshShop(): boolean;
 export function refreshStash(): boolean;
@@ -2245,7 +2218,6 @@ export function reverseNumberology(
   spleenDelta: number
 ): {[key: number]: number};
 export function rollover(): number;
-export function round(arg: number): number;
 export function runChoice(decision: number): string;
 export function runChoice(decision: number, extra: string): string;
 export function runChoice(decision: number, extra: boolean): string;
@@ -2285,7 +2257,6 @@ export function soulsauceCost(skill: Skill): number;
 export function spleenLimit(): number;
 export function splitString(string: string): string[];
 export function splitString(string: string, regex: string): string[];
-export function squareRoot(val: number): number;
 export function startsWith(source: string, prefix: string): boolean;
 export function stashAmount(arg: Item): number;
 export function statBonusToday(): Stat;
@@ -2411,7 +2382,6 @@ export function totalFreeRests(): number;
 export function totalTurnsPlayed(): number;
 export function towerDoor(): boolean;
 export function traceprint(string: string): void;
-export function truncate(arg: number): number;
 export function turnsPerCast(skill: Skill): number;
 export function turnsPlayed(): number;
 export function twiddle(): string;
