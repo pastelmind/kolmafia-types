@@ -2,8 +2,14 @@
  * @file Type tests for zlib.ash.d.ts.
  */
 
-import {expectType} from 'tsd';
-import {rnum, vprint} from '../contrib/zlib.ash';
+import {expectError, expectType} from 'tsd';
+import {bestFam, obtain, rnum, vprint} from '../contrib/zlib.ash';
+
+expectType<Familiar>(bestFam('combat'));
+expectError(bestFam('asdf'));
+
+expectType<boolean>(obtain(1, 'spider web', Location.get('foo')));
+expectType<boolean>(obtain(1, 'spider web', Location.get('foo'), 'macro;'));
 
 expectType<string>(rnum(0));
 expectType<string>(rnum(1.5));
