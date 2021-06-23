@@ -82,6 +82,41 @@ type CombatFilterCallback = (
  * Adventure exactly once in the specified `place` (even if it takes no turns),
  * although it will follow chained choice adventures for as long as you have
  * preset options.
+ * @version r20740
+ * @param place Adventuring location
+ * @return `true` if all adventures were used, or `false` otherwise (e.g. not
+ *    enough adventures, location unavailable). Also returns `false` if you
+ *    successfully adventured in a zone, but KoLmafia was put into a "PENDING"
+ *    state, which indicates that we might be done adventuring in this location
+ *    (usually because we finished the quest-related action in that zone).
+ */
+
+export function adv1(place: Location): boolean;
+
+/**
+ * Adventure exactly once in the specified `place` (even if it takes no turns),
+ * although it will follow chained choice adventures for as long as you have
+ * preset options.
+ * @version r20740
+ * @param place Adventuring location
+ * @param turnsUsed Overrides the normal number of adventures that are expected
+ *    to be consumed at this location, or -1 can be passed to use the default.
+ *    Specifically, 0 will prevent any counters from triggering - of course, if
+ *    an adventure actually is consumed, any counters that you kept from
+ *    triggering will be lost.
+ * @return `true` if all adventures were used, or `false` otherwise (e.g. not
+ *    enough adventures, location unavailable). Also returns `false` if you
+ *    successfully adventured in a zone, but KoLmafia was put into a "PENDING"
+ *    state, which indicates that we might be done adventuring in this location
+ *    (usually because we finished the quest-related action in that zone).
+ */
+
+export function adv1(place: Location, turnsUsed: number): boolean;
+
+/**
+ * Adventure exactly once in the specified `place` (even if it takes no turns),
+ * although it will follow chained choice adventures for as long as you have
+ * preset options.
  * @param place Adventuring location
  * @param turnsUsed Overrides the normal number of adventures that are expected
  *    to be consumed at this location, or -1 can be passed to use the default.
