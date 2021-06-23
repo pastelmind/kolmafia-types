@@ -28,6 +28,8 @@ expectType<boolean>(
   )
 );
 
+expectType<boolean>(adv1(Location.get('foo')));
+expectType<boolean>(adv1(Location.get('foo'), -1));
 expectType<boolean>(adv1(Location.get('foo'), -1, 'macro'));
 expectType<boolean>(
   adv1(
