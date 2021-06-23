@@ -17,6 +17,26 @@ List of sections:
 
 ## [Unreleased]
 
+## [0.1.2] - 2021-06-23
+
+### Added
+
+- Add `guildAvailable()` ([#31])
+- `adv1()`, `adventure()`, and `runCombat()` now support passing a combat filter
+  function as the parameter. (r20738) ([#34])
+- Add 1- and 2-parameter versions of `adv1()` (r20740) ([#35])
+- ZLib: Add `bestFam()`, `obtain()` ([#36])
+
+### Changed
+
+- Mark `round()`, `squareRoot()`, `truncate()` as `@deprecated` ([#33])
+
+[#31]: https://github.com/pastelmind/kolmafia-types/pull/31
+[#33]: https://github.com/pastelmind/kolmafia-types/pull/33
+[#34]: https://github.com/pastelmind/kolmafia-types/pull/34
+[#35]: https://github.com/pastelmind/kolmafia-types/pull/35
+[#36]: https://github.com/pastelmind/kolmafia-types/pull/36
+
 ## [0.1.1] - 2021-05-03
 
 ### Added
@@ -151,7 +171,8 @@ List of sections:
 
 - Initial release
 
-[unreleased]: https://github.com/pastelmind/kolmafia-types/compare/v0.1.1...HEAD
+[unreleased]: https://github.com/pastelmind/kolmafia-types/compare/v0.1.2...HEAD
+[0.1.2]: https://github.com/pastelmind/kolmafia-types/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/pastelmind/kolmafia-types/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.6...v0.1.0
 [0.0.6]: https://github.com/pastelmind/kolmafia-types/compare/v0.0.5...v0.0.6
