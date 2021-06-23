@@ -329,9 +329,9 @@ export function availableChoiceOptions(): {[key: number]: string};
  *    choice button text
  * @return Mapping of choice number to choice button text
  */
-export function availableChoiceOptions(
-  spoilers: boolean
-): {[key: number]: string};
+export function availableChoiceOptions(spoilers: boolean): {
+  [key: number]: string;
+};
 
 /**
  * For the `decision` choice in the current (or last) choice adventure, returns
@@ -342,9 +342,9 @@ export function availableChoiceOptions(
  *    value is an object that contains the `value` attribute and text of all
  *    `<option>` tags inside the `<select>` tag.
  */
-export function availableChoiceSelectInputs(
-  decision: number
-): {[selectName: string]: {[optionValue: string]: string}};
+export function availableChoiceSelectInputs(decision: number): {
+  [selectName: string]: {[optionValue: string]: string};
+};
 
 /**
  * For the `decision` choice in the current (or last) choice adventure, returns
@@ -354,9 +354,9 @@ export function availableChoiceSelectInputs(
  *    `<input type="text">` tags associated with the choice. The values are
  *    always empty strings.
  */
-export function availableChoiceTextInputs(
-  decision: number
-): {[inputName: string]: ''};
+export function availableChoiceTextInputs(decision: number): {
+  [inputName: string]: '';
+};
 
 /**
  * Exits batch mode, executes all batch-aware operations that were called after
@@ -1839,9 +1839,9 @@ export function getGoals(): string[];
 export function getIgnoreZoneWarnings(): boolean;
 export function getIngredients(arg: Item): {[item: string]: number};
 export function getInventory(): {[item: string]: number};
-export function getLocationMonsters(
-  location: Location
-): {[monster: string]: boolean};
+export function getLocationMonsters(location: Location): {
+  [monster: string]: boolean;
+};
 export function getMonsterMapping(): {[monster: string]: Monster};
 export function getMonsterMapping(path: string): {[monster: string]: Monster};
 export function getMonsters(location: Location): Monster[];
@@ -2293,9 +2293,7 @@ export function substring(
 ): string;
 export function svnAtHead(project: string): boolean;
 export function svnExists(project: string): boolean;
-export function svnInfo(
-  script: string
-): {
+export function svnInfo(script: string): {
   url: string;
   revision: number;
   last_changed_author: string;
