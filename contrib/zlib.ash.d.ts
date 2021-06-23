@@ -1,4 +1,27 @@
 /**
+ * Returns the best familiar you own for a given type.
+ *
+ * If your `is_100_run` ZLib variable is anything other than `none`, this
+ * returns that familiar instead, so that you do not accidentally break a 100%
+ * familiar run.
+ * @param type Familiar type known to ZLib
+ * @return Best familiar you own for the given type
+ */
+export function bestFam(
+  type:
+    | 'combat'
+    | 'delevel'
+    | 'dodge'
+    | 'elemental damage'
+    | 'items'
+    | 'meat'
+    | 'produce'
+    | 'restore hp'
+    | 'stat'
+    | 'water'
+): Familiar;
+
+/**
  * @file Type definition for Zlib, made by zarqon.
  *
  * - ASH script name: Zlib
@@ -11,6 +34,38 @@
  */
 
 export function kmail(to: string, message: string, meat: number): boolean;
+
+/**
+ * Attempts to obtain `qty` of `condition`, either by purchasing, pulling, or
+ * adventuring at the specified `location`.
+ * @param qty Item quantity, or number of choice adventure number
+ * @param condition Condition to use as goal for auto-adventuring.
+ *    Any condition understood by KoLmafia is supported.
+ * @param location Location to adventure in
+ * @return Whether the condition was satisfied
+ */
+export function obtain(
+  qty: number,
+  condition: string,
+  location: Location
+): boolean;
+
+/**
+ * Attempts to obtain `qty` of `condition`, either by purchasing, pulling, or
+ * adventuring at the specified `location`.
+ * @param qty Item quantity, or number of choice adventure number
+ * @param condition Condition to use as goal for auto-adventuring.
+ *    Any condition understood by KoLmafia is supported.
+ * @param location Location to adventure in
+ * @param filter Combat filter string to use while adventuring
+ * @return Whether the condition was satisfied
+ */
+export function obtain(
+  qty: number,
+  condition: string,
+  location: Location,
+  filter: string
+): boolean;
 
 export function setvar(
   varname: string,
