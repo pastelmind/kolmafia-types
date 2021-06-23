@@ -72,6 +72,12 @@ export function addItemCondition(qty: number, item: Item): void;
  */
 export function addItemCondition(item: Item, qty: number): void;
 
+type CombatFilterCallback = (
+  round: number,
+  enemy: Monster,
+  page: string
+) => string;
+
 /**
  * Adventure exactly once in the specified `place` (even if it takes no turns),
  * although it will follow chained choice adventures for as long as you have
@@ -82,11 +88,43 @@ export function addItemCondition(item: Item, qty: number): void;
  *    Specifically, 0 will prevent any counters from triggering - of course, if
  *    an adventure actually is consumed, any counters that you kept from
  *    triggering will be lost.
- * @param filter A macro (if it contains a semicolon) or the name of a combat
- *    filter function defined elsewhere in your script, with the same behavior
- *    as in the 3-parameter version of `adventure()`. An empty string can be
- *    passed to use your battle action or CCS as normal.
- *    (*NOTE: It is unclear how this parameter works in JavaScript.*)
+ * @param filter Combat filter string.
+ *    If this is an empty string, KoLmafia will use your normal combat settings.
+ *    Otherwise, this is treated as a combat macro string, and _must_ contain at
+ *    least one semicolon (`;`).
+ *
+ *    Note: Unlike the ASH version, you cannot pass the name of a function as
+ *    the argument!
+ * @return `true` if all adventures were used, or `false` otherwise (e.g. not
+ *    enough adventures, location unavailable). Also returns `false` if you
+ *    successfully adventured in a zone, but KoLmafia was put into a "PENDING"
+ *    state, which indicates that we might be done adventuring in this location
+ *    (usually because we finished the quest-related action in that zone).
+ */
+
+export function adv1(
+  place: Location,
+  turnsUsed: number,
+  filter: string
+): boolean;
+
+/**
+ * Adventure exactly once in the specified `place` (even if it takes no turns),
+ * although it will follow chained choice adventures for as long as you have
+ * preset options.
+ * @version r20738
+ * @param place Adventuring location
+ * @param turnsUsed Overrides the normal number of adventures that are expected
+ *    to be consumed at this location, or -1 can be passed to use the default.
+ *    Specifically, 0 will prevent any counters from triggering - of course, if
+ *    an adventure actually is consumed, any counters that you kept from
+ *    triggering will be lost.
+ * @param filterCallback Combat filter function.
+ *    A combat filter function takes three arguments: the current round number
+ *    (integer), the enemy monster, and the HTML source of the current fight
+ *    page (string). It must return a string containing combat macro(s).
+ *    KoLmafia will call this function (possibly multiple times) to obtain the
+ *    next combat action.
  * @return `true` if all adventures were used, or `false` otherwise (e.g. not
  *    enough adventures, location unavailable). Also returns `false` if you
  *    successfully adventured in a zone, but KoLmafia was put into a "PENDING"
@@ -96,7 +134,7 @@ export function addItemCondition(item: Item, qty: number): void;
 export function adv1(
   place: Location,
   turnsUsed: number,
-  filter: string
+  filterCallback: CombatFilterCallback
 ): boolean;
 
 /**
@@ -142,13 +180,13 @@ export function adventure(adventures: number, place: Location): boolean;
  *    adventures that don't consume an adventure) or adventures spent in other
  *    locations (e.g. by a `counterScript` or a `betweenBattleScript`) do not
  *    count towards this total.
- * @param filter Combat action filter. If this contains a semicolon, it is
- *    interpreted as a macro; otherwise, this is the name of a top-level
- *    function which modifies the current CCS. A combat filter function takes
- *    the parameters of a consult script, but returns lines like a CCS, not like
- *    a consult script. Essentially, this allows the scripter to put a CCS or
- *    macro into a script.
- *    (*NOTE: It is unclear how this parameter works in JavaScript.*)
+ * @param filter Combat filter string.
+ *    If this is an empty string, KoLmafia will use your normal combat settings.
+ *    Otherwise, this is treated as a combat macro string, and _must_ contain at
+ *    least one semicolon (`;`).
+ *
+ *    Note: Unlike the ASH version, you cannot pass the name of a function as
+ *    the argument!
  * @return `true` if the specified number of adventures were used, or `false`
  *    otherwise (e.g. not enough adventures, location unavailable, all goals
  *    satisfied while adventuring, or auto-stop triggered).
@@ -162,18 +200,43 @@ export function adventure(
 /**
  * Spends `adventures` at the `place`, keeping up your current mood & obeying
  * restore settings.
+ * @version r20738
+ * @param place Adventuring location
+ * @param adventures Number of adventures to spend. Any "free" turns (e.g choice
+ *    adventures that don't consume an adventure) or adventures spent in other
+ *    locations (e.g. by a `counterScript` or a `betweenBattleScript`) do not
+ *    count towards this total.
+ * @param filterCallback Combat filter function.
+ *    A combat filter function takes three arguments: the current round number
+ *    (integer), the enemy monster, and the HTML source of the current fight
+ *    page (string). It must return a string containing combat macro(s).
+ *    KoLmafia will call this function (possibly multiple times) to obtain the
+ *    next combat action.
+ * @return `true` if the specified number of adventures were used, or `false`
+ *    otherwise (e.g. not enough adventures, location unavailable, all goals
+ *    satisfied while adventuring, or auto-stop triggered).
+ */
+export function adventure(
+  place: Location,
+  adventures: number,
+  filterCallback: CombatFilterCallback
+): boolean;
+
+/**
+ * Spends `adventures` at the `place`, keeping up your current mood & obeying
+ * restore settings.
  * @param adventures Number of adventures to spend. Any "free" turns (e.g choice
  *    adventures that don't consume an adventure) or adventures spent in other
  *    locations (e.g. by a `counterScript` or a `betweenBattleScript`) do not
  *    count towards this total.
  * @param place Adventuring location
- * @param filter Combat action filter. If this contains a semicolon, it is
- *    interpreted as a macro; otherwise, this is the name of a top-level
- *    function which modifies the current CCS. A combat filter function takes
- *    the parameters of a consult script, but returns lines like a CCS, not like
- *    a consult script. Essentially, this allows the scripter to put a CCS or
- *    macro into a script.
- *    (*NOTE: It is unclear how this parameter works in JavaScript.*)
+ * @param filter Combat filter string.
+ *    If this is an empty string, KoLmafia will use your normal combat settings.
+ *    Otherwise, this is treated as a combat macro string, and _must_ contain at
+ *    least one semicolon (`;`).
+ *
+ *    Note: Unlike the ASH version, you cannot pass the name of a function as
+ *    the argument!
  * @return `true` if the specified number of adventures were used, or `false`
  *    otherwise (e.g. not enough adventures, location unavailable, all goals
  *    satisfied while adventuring, or auto-stop triggered).
@@ -182,6 +245,31 @@ export function adventure(
   adventures: number,
   place: Location,
   filter: string
+): boolean;
+
+/**
+ * Spends `adventures` at the `place`, keeping up your current mood & obeying
+ * restore settings.
+ * @version r20738
+ * @param adventures Number of adventures to spend. Any "free" turns (e.g choice
+ *    adventures that don't consume an adventure) or adventures spent in other
+ *    locations (e.g. by a `counterScript` or a `betweenBattleScript`) do not
+ *    count towards this total.
+ * @param place Adventuring location
+ * @param filterCallback Combat filter function.
+ *    A combat filter function takes three arguments: the current round number
+ *    (integer), the enemy monster, and the HTML source of the current fight
+ *    page (string). It must return a string containing combat macro(s).
+ *    KoLmafia will call this function (possibly multiple times) to obtain the
+ *    next combat action.
+ * @return `true` if the specified number of adventures were used, or `false`
+ *    otherwise (e.g. not enough adventures, location unavailable, all goals
+ *    satisfied while adventuring, or auto-stop triggered).
+ */
+export function adventure(
+  adventures: number,
+  place: Location,
+  filterCallback: CombatFilterCallback
 ): boolean;
 
 /**
@@ -2226,8 +2314,39 @@ export function runChoice(
   custom: boolean,
   more: string
 ): string;
+
+/**
+ * Proceeds the current fight using your current combat settings.
+ * @return HTML source of the final combat page.
+ */
 export function runCombat(): string;
-export function runCombat(filterFunction: string): string;
+
+/**
+ * Proceeds the current fight using a combat filter.
+ * @param filter Combat filter string.
+ *    If this is an empty string, KoLmafia will use your normal combat settings.
+ *    Otherwise, this is treated as a combat macro string, and _must_ contain at
+ *    least one semicolon (`;`).
+ *
+ *    Note: Unlike the ASH version, you cannot pass the name of a function as
+ *    the argument!
+ * @return HTML source of the final combat page.
+ */
+export function runCombat(filter: string): string;
+
+/**
+ * Proceeds the current fight using a combat filter.
+ * @version r20738
+ * @param filterCallback Combat filter function.
+ *    A combat filter function takes three arguments: the current round number
+ *    (integer), the enemy monster, and the HTML source of the current fight
+ *    page (string). It must return a string containing combat macro(s).
+ *    KoLmafia will call this function (possibly multiple times) to obtain the
+ *    next combat action.
+ * @return HTML source of the final combat page.
+ */
+export function runCombat(filterCallback: CombatFilterCallback): string;
+
 export function runTurn(): string;
 export function runaway(): string;
 export function sell(
