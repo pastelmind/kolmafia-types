@@ -1879,6 +1879,16 @@ export function groupString(
   string: string,
   regex: string
 ): {[key: number]: {[key: number]: string}};
+
+/**
+ * Checks if your character can access the guild.
+ */
+export function guildAvailable(): boolean;
+
+/**
+ * Checks if your character can access the guild and have unlocked the guild
+ * store.
+ */
 export function guildStoreAvailable(): boolean;
 export function handlingChoice(): boolean;
 export function haveBartender(): boolean;
