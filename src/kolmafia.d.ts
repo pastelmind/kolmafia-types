@@ -1541,7 +1541,7 @@ export function equippedItem(slot: Slot): Item;
  * @version r20630
  */
 type EudoraReturnType =
-  | 'none'
+  | 'None'
   | 'Penpal'
   | 'GameInformPowerDailyPro Magazine'
   | 'Xi Receiver Unit'
@@ -1556,7 +1556,7 @@ type EudoraInputType = 'penpal' | 'game' | 'xi' | 'newyou';
 
 /**
  * Returns your currently active {@link https://kol.coldfront.net/thekolwiki/index.php/Correspondence correspondent}.
- * @return Your current correspondent type, or `none` if you have no
+ * @return Your current correspondent type, or `None` if you have no
  *    correspondent set. If the correspondent type is unknown to KoLmafia, this
  *    returns `Unknown`.\
  *    Note: This is _different_ from the values accepted by the single-argument
