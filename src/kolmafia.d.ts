@@ -1580,6 +1580,14 @@ export function eudora<T extends string>(
 ): boolean;
 
 /**
+ * Returns the correspondence item associated with your currently active
+ * {@link https://kol.coldfront.net/thekolwiki/index.php/Correspondence correspondent}.
+ * If you do not have any correspondents, returns the `none` item.
+ * @version r20771
+ */
+export function eudoraItem(): Item;
+
+/**
  * Card names returned by `everyCardName()`
  * @version r20630
  */
