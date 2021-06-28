@@ -2039,6 +2039,12 @@ export function inMultiFight(): boolean;
 export function inMuscleSign(): boolean;
 export function inMysticalitySign(): boolean;
 export function inaccessibleReason(master: Coinmaster): string;
+
+/**
+ * Checks whether your character is in a Casual ascension.
+ * @version r20779
+ */
+export function inCasual(): boolean;
 export function indexOf(source: string, search: string): number;
 export function indexOf(source: string, search: string, start: number): number;
 export function inebrietyLimit(): number;
