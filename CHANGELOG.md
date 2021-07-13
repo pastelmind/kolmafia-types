@@ -17,6 +17,25 @@ List of sections:
 
 ## [Unreleased]
 
+### Added
+
+- JSDoc comments for all string-manipulating functions ([#40])
+
+### Changed
+
+- String-manipulating functions that have equivalent JavaScript builtins are
+  marked as `@deprecated`. This includes `indexOf()`, `lastIndexOf()`,
+  `length()`, `splitString()`, `startsWith()`, and `substring()`. ([#40])
+
+### Removed
+
+- `append()`, `insert()`, `replace()`, and `setLength()` are removed. Although
+  KoLmafia provides these functions, they require an ASH buffer as argument.
+  Since ASH buffers cannot be constructed in JavaScript, these functions are
+  effectively unusable. ([#40])
+
+[#40]: https://github.com/pastelmind/kolmafia-types/pull/40
+
 ## [0.1.2] - 2021-06-23
 
 ### Added
