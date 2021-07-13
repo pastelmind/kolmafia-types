@@ -19,8 +19,10 @@ List of sections:
 
 ### Added
 
+- `eudoraItem()` ([#37]), `inCasual()` ([#39])
 - JSDoc comments for all string-manipulating functions ([#40])
 - JSDoc comments for all Cargo Cultist Shorts functions ([#41])
+- EatDrink: Added 20-parameter form of `eatdrink()` ([#38])
 
 ### Changed
 
@@ -37,9 +39,13 @@ List of sections:
 
 ### Fixed
 
+- `eudora()` returns `"None"` instead of `"none"` ([#37])
 - Variants of `pickPocket()` that accept an `Effect`, `Item`, or `Stat` now
   return a `boolean`. ([#41])
 
+[#37]: https://github.com/pastelmind/kolmafia-types/pull/37
+[#38]: https://github.com/pastelmind/kolmafia-types/pull/38
+[#39]: https://github.com/pastelmind/kolmafia-types/pull/39
 [#40]: https://github.com/pastelmind/kolmafia-types/pull/40
 [#41]: https://github.com/pastelmind/kolmafia-types/pull/41
 
