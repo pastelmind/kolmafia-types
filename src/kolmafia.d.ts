@@ -371,18 +371,6 @@ export function appearanceRates(
 ): {[monster: string]: number};
 
 /**
- * **This function cannot be used in JavaScript due to limitations of KoLmafia's
- * type system.**
- *
- * Returns a buffer containing `original` with `add` tacked on to the end.
- * @deprecated
- * @param original Buffer to add to
- * @param add String to add on
- * @return Modified buffer
- */
-export function append(original: string, add: string): string;
-
-/**
  * Attacks with your weapon inside a consult script.
  * @return HTML response from the attack attempt
  */
@@ -774,14 +762,6 @@ export function candyForTier(tier: number, flags: number): Item[];
 export function changeMcd(level: number): boolean;
 
 /**
- * Returns the character in a string at the given index.
- * @deprecated Use `String.prototype.charAt()` instead.
- * @param source
- * @param index
- */
-export function charAt(source: string, index: number): string;
-
-/**
  * Posts a chat message to the "/clan" channel.
  * This does nothing if the player has not passed the Literacy test, or if
  * scripted chat has been disabled due to improper use.
@@ -903,15 +883,6 @@ export function combatManaCostModifier(): number;
  * For example, if your total Combat Rate modifier is -15%, this returns -15.0.
  */
 export function combatRateModifier(): number;
-
-/**
- * Checks if the `source` string contains the `search` substring.
- * @deprecated Use `String.prototype.includes()` instead
- * @param source Source string to search in
- * @param search Target substring to search for
- * @return Whether `source` contains `search`
- */
-export function containsText(source: string, search: string): boolean;
 
 /**
  * Visits the Council of Loathing.
@@ -1437,14 +1408,6 @@ export function emptyCloset(): boolean;
  *    The special keyword `"all"` enables _all_ ASH functions.
  */
 export function enable(functionNames: string): void;
-
-/**
- * Checks if the `source` string ends with the given `suffix`.
- * @deprecated Use `String.prototype.endsWith()` instead
- * @param source Source string to search in
- * @param suffix Suffix to search for
- */
-export function endsWith(source: string, suffix: string): boolean;
 
 /**
  * Puts the given familiar in your {@link https://kol.coldfront.net/thekolwiki/index.php/Crown_of_Thrones Crown of Thrones}.
@@ -1994,10 +1957,6 @@ export function getWorkshed(): Item;
 
 export function gnomadsAvailable(): boolean;
 export function goalExists(check: string): boolean;
-export function groupString(
-  string: string,
-  regex: string
-): {[key: number]: {[key: number]: string}};
 
 /**
  * Checks if your character can access the guild.
@@ -2045,11 +2004,9 @@ export function inaccessibleReason(master: Coinmaster): string;
  * @version r20779
  */
 export function inCasual(): boolean;
-export function indexOf(source: string, search: string): number;
-export function indexOf(source: string, search: string, start: number): number;
+
 export function inebrietyLimit(): number;
 export function initiativeModifier(): number;
-export function insert(buffer: string, index: number, s: string): string;
 export function isAccessible(master: Coinmaster): boolean;
 export function isBanished(arg: Monster): boolean;
 export function isCoinmasterItem(item: Item): boolean;
@@ -2101,17 +2058,10 @@ export function jumpChance(arg: Location, init: number, ml: number): number;
 export function knollAvailable(): boolean;
 export function lastChoice(): number;
 export function lastDecision(): number;
-export function lastIndexOf(source: string, search: string): number;
-export function lastIndexOf(
-  source: string,
-  search: string,
-  start: number
-): number;
 export function lastItemMessage(): string;
 export function lastMonster(): Monster;
 export function lastSkillMessage(): string;
 export function leetify(string: string): string;
-export function length(string: string): number;
 export function lightningCost(skill: Skill): number;
 export function limitMode(): string;
 export function loadHtml(string: string): string;
@@ -2322,22 +2272,6 @@ export function renameProperty(
   oldNameValue: string,
   newNameValue: string
 ): boolean;
-export function replace(
-  buffer: string,
-  start: number,
-  finish: number,
-  s: string
-): string;
-export function replaceString(
-  source: string,
-  searchValue: string,
-  replaceValue: string
-): string;
-export function replaceString(
-  source: string,
-  searchValue: string,
-  replaceValue: string
-): string;
 export function repriceShop(priceValue: number, itemValue: Item): boolean;
 export function repriceShop(
   priceValue: number,
@@ -2414,7 +2348,6 @@ export function sessionLogs(
 ): string[];
 export function setAutoAttack(attackValue: number): void;
 export function setAutoAttack(attackValue: string): void;
-export function setLength(buffer: string, i: number): void;
 export function setLocation(location: Location): void;
 export function setProperty(nameValue: string, value: string): void;
 export function shopAmount(arg: Item): number;
@@ -2423,9 +2356,6 @@ export function shopPrice(item: Item): number;
 export function slashCount(arg: Item): number;
 export function soulsauceCost(skill: Skill): number;
 export function spleenLimit(): number;
-export function splitString(string: string): string[];
-export function splitString(string: string, regex: string): string[];
-export function startsWith(source: string, prefix: string): boolean;
 export function stashAmount(arg: Item): number;
 export function statBonusToday(): Stat;
 export function statBonusTomorrow(): Stat;
@@ -2434,12 +2364,6 @@ export function stillsAvailable(): number;
 export function stopCounter(label: string): void;
 export function storageAmount(arg: Item): number;
 export function stunSkill(): Skill;
-export function substring(source: string, start: number): string;
-export function substring(
-  source: string,
-  start: number,
-  finish: number
-): string;
 export function svnAtHead(project: string): boolean;
 export function svnExists(project: string): boolean;
 export function svnInfo(script: string): {
