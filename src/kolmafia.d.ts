@@ -36,13 +36,13 @@ SOFTWARE.
 /**
  * Immediately halts the current script and all queued functions.
  */
-export function abort(): void;
+export function abort(): never;
 
 /**
  * Immediately halts the current script and all queued functions.
  * @param message Message to print
  */
-export function abort(message: string): void;
+export function abort(message: string): never;
 
 /**
  * Adds `qty` of `item` to your current adventuring conditions. Auto-adventuring
