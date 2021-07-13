@@ -854,6 +854,18 @@ export function choiceFollowsFight(): boolean;
 export function clear(map: unknown): void;
 
 /**
+ * Clears any queued food helper items (e.g. {@link https://kol.coldfront.net/thekolwiki/index.php/Divine_champagne_flute divine champagne flute}).
+ * @version r20796
+ */
+export function clearBoozeHelper(): void;
+
+/**
+ * Clears any queued food helper items (e.g. {@link https://kol.coldfront.net/thekolwiki/index.php/Ol%27_Scratch%27s_salad_fork Ol' Scratch's salad fork}).
+ * @version r20796
+ */
+export function clearFoodHelper(): void;
+
+/**
  * Executes a gCLI command.
  * @param command gCLI command
  * @return Whether the command was successfully executed
