@@ -3,7 +3,10 @@
  */
 
 import {expectType} from 'tsd';
-import {adv1, adventure, isDarkMode, runCombat} from '../src';
+import {abort, adv1, adventure, isDarkMode, runCombat} from '../src';
+
+expectType<never>(abort());
+expectType<never>(abort('asdf'));
 
 expectType<boolean>(isDarkMode());
 

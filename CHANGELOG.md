@@ -42,12 +42,14 @@ List of sections:
 - `eudora()` returns `"None"` instead of `"none"` ([#37])
 - Variants of `pickPocket()` that accept an `Effect`, `Item`, or `Stat` now
   return a `boolean`. ([#41])
+- `abort()` now has a return type of `never` instead of `void`. ([#42])
 
 [#37]: https://github.com/pastelmind/kolmafia-types/pull/37
 [#38]: https://github.com/pastelmind/kolmafia-types/pull/38
 [#39]: https://github.com/pastelmind/kolmafia-types/pull/39
 [#40]: https://github.com/pastelmind/kolmafia-types/pull/40
 [#41]: https://github.com/pastelmind/kolmafia-types/pull/41
+[#42]: https://github.com/pastelmind/kolmafia-types/pull/42
 
 ## [0.1.2] - 2021-06-23
 
