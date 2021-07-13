@@ -20,6 +20,7 @@ List of sections:
 ### Added
 
 - JSDoc comments for all string-manipulating functions ([#40])
+- JSDoc comments for all Cargo Cultist Shorts functions ([#41])
 
 ### Changed
 
@@ -34,7 +35,13 @@ List of sections:
   Since ASH buffers cannot be constructed in JavaScript, these functions are
   effectively unusable. ([#40])
 
+### Fixed
+
+- Variants of `pickPocket()` that accept an `Effect`, `Item`, or `Stat` now
+  return a `boolean`. ([#41])
+
 [#40]: https://github.com/pastelmind/kolmafia-types/pull/40
+[#41]: https://github.com/pastelmind/kolmafia-types/pull/41
 
 ## [0.1.2] - 2021-06-23
 
