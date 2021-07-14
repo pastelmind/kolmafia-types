@@ -21,6 +21,7 @@ List of sections:
 
 - `eudoraItem()` ([#37]), `inCasual()` ([#39])
 - `clearBoozeHelper()`, `clearFoodHelper()` ([#43])
+- `userPrompt()` ([#44])
 - JSDoc comments for all string-manipulating functions ([#40])
 - JSDoc comments for all Cargo Cultist Shorts functions ([#41])
 - EatDrink: Added 20-parameter form of `eatdrink()` ([#38])
@@ -52,6 +53,7 @@ List of sections:
 [#41]: https://github.com/pastelmind/kolmafia-types/pull/41
 [#42]: https://github.com/pastelmind/kolmafia-types/pull/42
 [#43]: https://github.com/pastelmind/kolmafia-types/pull/43
+[#44]: https://github.com/pastelmind/kolmafia-types/pull/44
 
 ## [0.1.2] - 2021-06-23
 
