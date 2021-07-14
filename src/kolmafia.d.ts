@@ -2503,12 +2503,77 @@ export function useSkill(arg1: number, arg2: Skill): boolean;
 export function useSkill(arg1: Skill, arg2: number, target: string): boolean;
 export function useSkill(arg1: number, arg2: Skill, target: string): boolean;
 export function useSkill(skill: Skill): string;
+
+/**
+ * Show a popup dialog that asks the user to choose 'Yes' or 'No'.
+ * @param message Message to display
+ * @return `true` if the user clicked 'Yes', and `false` if the user clicked
+ *    'No' or the 'X' button.
+ */
 export function userConfirm(message: string): boolean;
+
+/**
+ * Show a popup dialog that asks the user to choose 'Yes' or 'No', which
+ * automatically closes after a delay.
+ * @param message Message to display
+ * @param timeoutMillis Time to wait before closing in milliseconds.
+ *    If this parameter is zero, the popup will wait indefinitely.
+ *    If a negative number is passed, throws an exception.
+ * @param defaultValue Default value to use if the timeout expires.
+ * @return `true` if the user clicked 'Yes', and `false` if the user clicked
+ *    'No' or the 'X' button.
+ */
 export function userConfirm(
   message: string,
-  timeOut: number,
-  defaultBoolean: boolean
+  timeoutMillis: number,
+  defaultValue: boolean
 ): boolean;
+
+/**
+ * Show a popup dialog that asks for user input.
+ * @version r20797
+ * @param message Message to show
+ * @return String entered by the user. If the user clicks 'Cancel', returns an
+ *    empty string instead.
+ */
+export function userPrompt(message: string): string;
+
+/**
+ * Show a popup dialog that asks the user to select one of multiple choices.
+ *
+ * All choices are sorted alphabetically when shown.
+ * @version r20799
+ * @param message Message to show
+ * @param choices Object whose keys are choice strings.
+ *    Although the values are not used, the `choices` object must be convertable
+ *    into an ASH map (i.e. the values must be a homogeneous type that can be
+ *    converted into an ASH type); otherwise, KoLmafia will abort the script.
+ *    If the object is empty, no popup is shown and the function immediately
+ *    returns an empty string.
+ * @return Choice string selected by the user.
+ */
+export function userPrompt(
+  message: string,
+  choices: Record<string, unknown>
+): string;
+
+/**
+ * Show a popup dialog that asks for user input, which automatically closes
+ * after a delay.
+ * @version r20799
+ * @param message Message to show
+ * @param timeoutInMillis Time to wait before closing in milliseconds.
+ *    If this parameter is zero, the popup will wait indefinitely.
+ *    If a negative number is passed, throws an exception.
+ * @param defaultValue Default value to use if the timeout expires, or the user
+ *    clicks 'Cancel'.
+ */
+export function userPrompt(
+  message: string,
+  timeoutInMillis: number,
+  defaultValue: string
+): string;
+
 export function visit(master: Coinmaster): boolean;
 export function visitUrl(): string;
 export function visitUrl(string: string): string;
