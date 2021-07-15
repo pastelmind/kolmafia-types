@@ -17,6 +17,12 @@ List of sections:
 
 ## [Unreleased]
 
+### Fixed
+
+- ZLib: `kmail()` uses the correct JSDoc comment as tooltip. ([#45])
+
+[#45]: https://github.com/pastelmind/kolmafia-types/pull/45
+
 ## [0.2.0] - 2021-07-14
 
 ### Added
