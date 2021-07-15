@@ -1,4 +1,16 @@
 /**
+ * @file Type definition for Zlib, made by zarqon.
+ *
+ * - ASH script name: Zlib
+ * - ASH script version: r49
+ * - ASH script authors: zarqon
+ *
+ * Links:
+ *  - ASH script forum thread: https://kolmafia.us/threads/zlib-zarqons-useful-function-library.2072/
+ *  - Wiki page: https://wiki.kolmafia.us/index.php?title=Zlib
+ */
+
+/**
  * Returns the best familiar you own for a given type.
  *
  * If your `is_100_run` ZLib variable is anything other than `none`, this
@@ -21,19 +33,15 @@ export function bestFam(
     | 'water'
 ): Familiar;
 
+// Due to compatibility issues between ASH and JavaScript, only the 3-parameter
+// form of kmail() can be called from JavaScript.
 /**
- * @file Type definition for Zlib, made by zarqon.
- *
- * - ASH script name: Zlib
- * - ASH script version: r49
- * - ASH script authors: zarqon
- *
- * Links:
- *  - ASH script forum thread: https://kolmafia.us/threads/zlib-zarqons-useful-function-library.2072/
- *  - Wiki page: https://wiki.kolmafia.us/index.php?title=Zlib
+ * Sends a kmail (or gift message) to another player.
+ * @param recipent Target player ID or username
+ * @param message Kmail or gift message
+ * @param meat Amount of meat to send
  */
-
-export function kmail(to: string, message: string, meat: number): boolean;
+export function kmail(recipent: string, message: string, meat: number): boolean;
 
 /**
  * Attempts to obtain `qty` of `condition`, either by purchasing, pulling, or
