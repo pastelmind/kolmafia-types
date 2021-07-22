@@ -119,3 +119,10 @@ export function statModifier(arg: Effect, modifier: string): Stat;
 
 export function stringModifier(modifier: string): string;
 export function stringModifier(arg: string, modifier: string): string;
+
+/**
+ * @version r20801
+ * @param arg
+ * @param modifier
+ */
+export function stringModifier(arg: Item, modifier: string): string;
