@@ -2255,6 +2255,16 @@ export function myThrall(): Thrall;
 export function myThunder(): number;
 export function myTurncount(): number;
 export function myVykeaCompanion(): Vykea;
+
+/**
+ * Returns the amount of water you currently have in the {@link https://kol.coldfront.net/thekolwiki/index.php/Wildfire Wildfire}
+ * challenge path.
+ * If you are not in Wildfire, this returns 0.
+ * @version r20830
+ * @return Amount of water owned
+ */
+export function myWildfireWater(): number;
+
 export function nowToInt(): number;
 export function nowToString(dateFormatValue: string): string;
 export function npcPrice(item: Item): number;
