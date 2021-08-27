@@ -337,6 +337,13 @@ declare global {
     readonly parentdesc: string;
     /** Environment */
     readonly environment: string;
+    /**
+     * If in {@link https://kol.coldfront.net/thekolwiki/index.php/Wildfire Wildfire},
+     * indicates the fire level in this location.
+     * Otherwise, this is always 0.
+     * @version r20830
+     */
+    readonly fireLevel: number;
     /** Bounty */
     readonly bounty: Bounty;
     /** Combat queue */
