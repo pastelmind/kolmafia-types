@@ -2052,10 +2052,46 @@ export function itemAmount(arg: Item): number;
 export function itemDropModifier(): number;
 export function itemDrops(): {[item: string]: number};
 export function itemDrops(arg: Monster): {[item: string]: number};
-export function itemDropsArray(): {drop: Item; rate: number; type: string}[];
-export function itemDropsArray(
-  monster: Monster
-): {drop: Item; rate: number; type: string}[];
+
+/**
+ * Indicates the item drop type.
+ *
+ * - Empty string (`''`) indicates a regular drop
+ * - `'0'` indicates items for which KoLmafia has no drop information
+ * - `'a'` indicates items that can be gained only with Steal Accordion
+ * - `'c'` indicates conditional drops (implies cannot be pickpocketed)
+ * - `'f'` indicates items that have a fixed drop rate
+ * - `'n'` indicates items that cannot be pickpocketed
+ * - `'p'` indicates items that can be gained only with pickpocket
+ */
+export type ItemDropType = '' | '0' | 'c' | 'n' | 'a' | 'f' | 'p';
+
+/**
+ * Information about an item dropped by a monster.
+ */
+export interface ItemDropEntry {
+  /** Item dropped */
+  drop: Item;
+  /** Base drop rate of the item in percent (ex: `15` means 15% drop chance) */
+  rate: number;
+  /** Item drop type */
+  type: ItemDropType;
+}
+
+/**
+ * Returns an array of records for items dropped by the current (or last)
+ * monster.
+ * @version r20827 Was buggy before this revision
+ */
+export function itemDropsArray(): ItemDropEntry[];
+
+/**
+ * Returns an array of records for items dropped by the `monster`.
+ * @param monster Monster to check
+ * @version r20827 Was buggy before this revision
+ */
+export function itemDropsArray(monster: Monster): ItemDropEntry[];
+
 export function itemDropsArray(
   arg: Monster
 ): {drop: Item; rate: number; type: string}[];
