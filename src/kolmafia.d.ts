@@ -1513,24 +1513,26 @@ export function equippedItem(slot: Slot): Item;
 
 /**
  * Correspondence types returned by `eudora()` (no-argument form).
- * @version r20630
+ * @version r20807 Added Our Daily Candles
  */
 type EudoraReturnType =
   | 'None'
   | 'Penpal'
   | 'GameInformPowerDailyPro Magazine'
   | 'Xi Receiver Unit'
-  | 'New-You Club';
+  | 'New-You Club'
+  | 'Our Daily Candles';
 
 /**
  * Correspondence types accepted by `eudora()` (single-argument form).
  * Note: The argument passed to `eudora()` is actually case-insensitive.
- * @version r20630
+ * @version r20807 Added Our Daily Candles
  */
-type EudoraInputType = 'penpal' | 'game' | 'xi' | 'newyou';
+type EudoraInputType = 'penpal' | 'game' | 'xi' | 'newyou' | 'candle';
 
 /**
  * Returns your currently active {@link https://kol.coldfront.net/thekolwiki/index.php/Correspondence correspondent}.
+ * @version r20807 Added Our Daily Candles
  * @return Your current correspondent type, or `None` if you have no
  *    correspondent set. If the correspondent type is unknown to KoLmafia, this
  *    returns `Unknown`.\
@@ -1542,6 +1544,7 @@ export function eudora(): EudoraReturnType | 'Unknown';
 /**
  * Changes your active {@link https://kol.coldfront.net/thekolwiki/index.php/Correspondence correspondent}.
  *    If an invalid correspondent type is given, this returns `false`.
+ * @version r20807 Added Our Daily Candles
  * @param newEudora New correspondent type (case-insensitive).\
  *    Note: This is _different_ from the values returned by the no-argument form
  *    of `eudora()`.
