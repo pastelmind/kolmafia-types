@@ -17,11 +17,33 @@ List of sections:
 
 ## [Unreleased]
 
+## [0.3.0] - 2021-08-30
+
+### Added
+
+- Wildfire path support: added `myWildfireWater()` and `Location.fireLevel`.
+  ([#49])
+- `stringModifier(Item, string)` form ([#46])
+
+### Changed
+
+- The return type of `itemDropsArray()` has been reified as the `ItemDropEntry`
+  interface. Also added a `@version` tag to indicate that it was broken before
+  r20827. ([#47])
+- `eudora()` now supports Our Daily Candles&trade;. ([#48])
+
 ### Fixed
 
+- `Location.get()` now accepts `snarfblat` values (integers) in addition to
+  names (strings). ([#50])
 - ZLib: `kmail()` uses the correct JSDoc comment as tooltip. ([#45])
 
 [#45]: https://github.com/pastelmind/kolmafia-types/pull/45
+[#46]: https://github.com/pastelmind/kolmafia-types/pull/46
+[#47]: https://github.com/pastelmind/kolmafia-types/pull/47
+[#48]: https://github.com/pastelmind/kolmafia-types/pull/48
+[#49]: https://github.com/pastelmind/kolmafia-types/pull/49
+[#50]: https://github.com/pastelmind/kolmafia-types/pull/50
 
 ## [0.2.0] - 2021-07-14
 
@@ -217,7 +239,8 @@ List of sections:
 
 - Initial release
 
-[unreleased]: https://github.com/pastelmind/kolmafia-types/compare/v0.2.0...HEAD
+[unreleased]: https://github.com/pastelmind/kolmafia-types/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/pastelmind/kolmafia-types/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/pastelmind/kolmafia-types/compare/v0.1.2...v0.2.0
 [0.1.2]: https://github.com/pastelmind/kolmafia-types/compare/v0.1.1...v0.1.2
 [0.1.1]: https://github.com/pastelmind/kolmafia-types/compare/v0.1.0...v0.1.1
