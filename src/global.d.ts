@@ -322,8 +322,26 @@ declare global {
   class Location {
     /** KoLmafia built-in classes cannot be instantiated directly. */
     private constructor();
-    static get(name: string): Location;
-    static get(names: string[]): Location[];
+
+    /**
+     * Retrieves a location by name or its "snarfblat" number.
+     *
+     * The "snarfblat" is the number associated with the location's URL
+     * (returned by `toUrl()`).
+     * @param nameOrSnarfblat Location name (string) or snarfblat (number)
+     * @return Matched Location object
+     */
+    static get(nameOrSnarfblat: number | string): Location;
+
+    /**
+     * Retrieves an array of locations by names and/or "snarfblat" numbers.
+     *
+     * The "snarfblat" is the number associated with the location's URL
+     * (returned by `toUrl()`).
+     * @param namesOrSnafblats Array of location names and snarfblats
+     */
+    static get(namesOrSnafblats: (number | string)[]): Location[];
+
     static all(): Location[];
     /** Nocombats */
     readonly nocombats: boolean;
